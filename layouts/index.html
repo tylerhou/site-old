@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p>Hello, world</p>
+        {{ range first 10 .Data.Pages }}
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+        {{ end }}
+    </body>
+</html>
+

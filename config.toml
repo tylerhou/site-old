@@ -1,4 +1,4 @@
-baseURL = "https://tylerhou.io/"
+baseURL = "https://blog.tylerhou.io/"
 languageCode = "en-us"
 title = "Tyler Hou"
-theme = "cocoa"
+theme = ""
