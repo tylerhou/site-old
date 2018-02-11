@@ -8,7 +8,7 @@ params:
   author:
     name: "Tyler Hou"
     occupation: "Software Development Engineer"
-    linkedin: "https://www.linkedin.com/in/tyler-h-05a954a9"
+    linkedin: "https://www.linkedin.com/in/tylerhou"
     resume:
       pdf: "/resume.pdf"
       tex: "/resume.tex"
