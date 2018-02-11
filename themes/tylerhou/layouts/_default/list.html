@@ -1,7 +1,7 @@
 {{ define "main" }}
-  <main>
+  <main class="list">
     {{ range .Data.Pages.GroupBy "Section" }}
-    <h3>{{ .Key | humanize }}</h3>
+    <h1>{{ .Key | humanize }}</h1>
     <ul>
       {{ range .Pages }}
       <li>

@@ -1,10 +1,11 @@
 {{ define "main" }}
-  <main>
+  <main class="list">
     <h1>{{ .CurrentSection.Title }}</h1>
     <ul>
       {{ range .Pages }}
       <li>
         <time>{{ .Date.Format .Site.Params.dateformat }}</time>
+        &middot;
         <a href="{{ .Permalink }}">{{ .Title }}</a>
       </li>
       {{ end }}

@@ -1,34 +1,12 @@
 {{ define "main" }}
-  <main>
-    {{ $author := .Site.Params.author }}
-    <h1>{{ $author.name }}</h1>
-    <h2>{{ $author.occupation }}</h2>
-    <dl>
-      <dt>Resume</dt>
-      <dd>
-        <ul>
-          {{ range $key, $value := $author.resume }}
-            <li>
-              <a href="{{ $value }}">{{ $key }}</a>
-            </li>
-          {{ end }}
-        </ul>
-      </dd>
-      <dt>LinkedIn</dt>
-      <dd>
-        <a href="{{ $author.linkedin }}"/>Tyler Hou</a>
-      </dd>
-    </dl>
-    <section>
-      <h3>Latest</h3>
-      <ol>
+  <main class="list">
+    <table>
       {{ range first 5 .Data.Pages }}
-      <li>
-        <time>{{ .Date.Format .Site.Params.dateformat }}</time>
-        <a href="{{ .Permalink}}">{{ .Title }}</a>
-      </li>
+        <tr>
+          <td class="td-posted-at"><time>{{ .Date.Format .Site.Params.dateformat }}</time></td>
+          <td class="td-title"><a href="{{ .Permalink}}">{{ .Title }}</a></td>
+        </tr>
       {{ end }}
-      </ol>
-    </section>
+    </table>
   </main>
 {{ end }}

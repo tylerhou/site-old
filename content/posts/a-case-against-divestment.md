@@ -1,8 +1,8 @@
 ---
-title: "A Case Against Divestment"
-subtitle: "I originally posted this on Facebook. The following version has been slightly edited."
+title: "A case against divestment"
+subtitle: "I originally posted this on Facebook. The following has been slightly edited."
 date: 2018-02-04T09:45:03-08:00
-draft: true
+draft: false
 ---
 
 I've recently seen a few posts on Facebook about a petition which asks Exeter to divest from fossil fuel investments. Many of the arguments I've read in support of divestment argue that it's the ethical and right thing to do. However, I think the situation has more nuance. Here's my case against divestment.
@@ -17,7 +17,7 @@ In fact, 350.org's campaign reeks of post-industrial privilege. A video on its w
 
 Divestment, fighting climate change, and stopping the use of fossil fuels seem nice and feel warm and fuzzy. But there are real world consequences. The first, most obvious consequence is that Exeter loses a significant amount of money. (Yes, I've read the website[^2], including the part where it says "we hope to create a financial plan to divest from fossil fuels and reinvest in renewable energy sources so that the net impact on the school will either remain at zero or produce a profit." I promise you that the trustees are smarter than all of the students/recent graduates of the academy, and if there was a way to do this then they would be doing it by now. It's literally their job.) The less obvious consequences are that we could potentially contribute to the degradation of infrastructure and investments which have *literally lifted hundreds of millions of people out of poverty and probably will lift hundreds of more millions of people out of poverty very soon*.
 
-(By the way, I completely support renewable energy sources. It's just that I think that the social good Exeter provides with the money it receives from its investments probably outweighs the slight harm that investing in fossil fuels causes. I also think that since we live in a post-industrial nation, we forget that most people in the world can't afford renewables and the challenges that come with them (no solar energy at night without expensive and dangerous batteries; no wind energy if it's not windy). Fossil fuels are a much more viable way of providing energy cheaply and reliably to the masses, especially those in developing countries. I also think a much more "socially just" way of preventing or slowing down climate change is to stop wasting as much fossil-fuel-generated energy in America and other developed nations[^1]. I'm also a fan of a carbon tax (but who isn't???))
+By the way, I completely support renewable energy sources. It's just that I think that the social good Exeter provides with the money it receives from its investments probably outweighs the slight harm that investing in fossil fuels causes. I also think that since we live in a post-industrial nation, we forget that most people in the world can't afford renewables and the challenges that come with them (no solar energy at night without expensive and dangerous batteries; no wind energy if it's not windy). Fossil fuels are a much more viable way of providing energy cheaply and reliably to the masses, especially those in developing countries. I also think a much more "socially just" way of preventing or slowing down climate change is to stop wasting as much fossil-fuel-generated energy in America and other developed nations[^1]. I'm also a fan of a carbon tax (but who isn't?).
 
 [^1]: https://www.nytimes.com/2017/11/07/opinion/bipartisan-energy-efficiency.html
 [^2]: https://divestexeter.weebly.com/
