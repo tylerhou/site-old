@@ -7,6 +7,9 @@
         {{ .Site.Title }}
       {{ end }}
     </title>
+    {{ block "resources" . }}
+
+    {{ end }}
   </head>
   <body>
     {{ block "main" . }}

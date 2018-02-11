@@ -2,6 +2,11 @@
   <article>
     <time>{{ .Date.Format .Site.Params.dateformat }}</time>
     <h1>{{ .Title }}</h1>
+    {{ with .Params.subtitle }}
+      <p class="subtitle">
+        {{.}}
+      </p>
+    {{ end }}
     <main>
       {{ .Content }}
     </main>

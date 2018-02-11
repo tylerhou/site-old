@@ -1,6 +1,6 @@
 {{ define "main" }}
   <main>
-    <h3>{{ .Key | humanize }}</h3>
+    <h1>{{ .CurrentSection.Title }}</h1>
     <ul>
       {{ range .Pages }}
       <li>
