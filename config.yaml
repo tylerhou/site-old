@@ -1,0 +1,14 @@
+baseURL: "https://blog.tylerhou.io/"
+languageCode: "en-us"
+title: "Tyler Hou"
+theme: "tylerhou"
+
+params:
+  dateformat: "_2 Jan 2006"
+  author:
+    name: "Tyler Hou"
+    occupation: "Software Development Engineer"
+    linkedin: "https://www.linkedin.com/in/tyler-h-05a954a9"
+    resume:
+      pdf: "/resume.pdf"
+      tex: "/resume.tex"

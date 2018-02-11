@@ -1,0 +1,13 @@
+{{ define "main" }}
+  <main>
+    <h3>{{ .Key | humanize }}</h3>
+    <ul>
+      {{ range .Pages }}
+      <li>
+        <time>{{ .Date.Format .Site.Params.dateformat }}</time>
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </li>
+      {{ end }}
+    </ul>
+  </main>
+{{ end }}

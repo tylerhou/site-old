@@ -1,0 +1,87 @@
+%% Copyright 2006-2010 Xavier Danaux (xdanaux@gmail.com).
+%% Copyright 2010-2011 Mark Liu (markwayneliu@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+\documentclass[10pt,a4paper,sans]{moderncv}
+
+\usepackage{verbatim}
+
+\moderncvstyle{classic}
+\moderncvcolor{blue}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[top=1in,bottom=1in,scale=0.8]{geometry}
+\usepackage{multicol}
+\renewcommand*{\namefont}{\fontsize{30}{40}\mdseries\upshape}
+
+\usepackage{etoolbox}
+\patchcmd{\makecvtitle}{{minipage}[b]}{{minipage}[t]}{}{}
+\patchcmd{\makecvtitle}{{tabular}[b]}{{tabular}}{}{}
+
+\firstname{Tyler}
+\familyname{Hou}
+\email{tyler.hou.cs@gmail.com}
+\extrainfo{\url{https://github.com/tylerhou}}
+
+\nopagenumbers{}
+\begin{document}
+\makecvtitle
+\vspace{-10mm}
+\section{Education}
+\cventry{2013--2017}{Classical Diploma}{Phillips Exeter Academy}{Class of 2017}{cum laude}{}
+\cventry{2017--2021}{Computer Science}{University of California, Berkeley}{Class of 2021}{}{}
+
+\section{Skills}
+\begin{multicols}{2}
+\subsection{Fluent}
+\cvline{languages}{JavaScript (ES6), Python}
+\cvline{technologies}{React, Node, Git, Linux}
+\columnbreak
+\subsection{Have Experience}
+\cvline{}{Ruby, C, C++, Java}
+\cvline{}{Rails, Webpack, \LaTeX, PostgreSQL}
+\end{multicols}
+
+\section{Work Experience}
+
+
+\cventry{2017--present}{Software Development Engineer}{Eden}{San Francisco, CA}{}{}
+\cventry{2014--2017}{Freelance Software Engineer}{Phillips Exeter Academy}{Exeter, NH}{}{
+\begin{itemize}
+\item Designed a new website for the Exeter Math Club with React, webapp2, and Google App Engine.\newline \url{https://exeter-math.appspot.com/} \newline \url{https://github.com/EMCC-team/emcc-website}
+\item Developed an online credit card payment system for the Exonian Online newspaper.
+\item Managed domain name, DNS, and hosting settings for Matter Magazine, an Exeter science publication.
+\item Created a visualization of the k-means algorithm for teaching students at Exeter Computing Club. \newline \url{https://github.com/tylerhou/kmeans}
+\end{itemize}
+}
+\cventry{summer 2014}{Teaching Assistant}{KTByte Computer Science Academy}{Lexington, MA}{}{
+Taught ages 9-12 and teenagers (13+) in Computing Fundamentals and Introduction to Computer Science courses, using Scratch and Processing respectively.
+}
+
+\section{Relevant Coursework}
+\subsection{Phillips Exeter Academy}
+\cvline{computer science}{\small\textbf{CSC420: Data Structures and Algorithms} (grade: A) \newline
+\textbf{CSC999: Databases and Independent Study} (grade: A)}
+\cvline{mathematics}{\small\textbf{Calculus I, II} (grade average: A),
+\textbf{Linear Algebra} (grade: A), \textbf{Real Analysis} (grade: A-), \textbf{Topology} (A-)}
+\subsection{Online Courseware}
+\cvline{computer science}{\small Coursera: Andrew Ng's Stanford University \textbf{Machine Learning} (100\% completed) \newline \url{https://www.coursera.org/account/accomplishments/certificate/7XHNAP2HGLTL}}
+
+\section{Projects}
+
+\cventry{2015}{Connect Four}{}{}{\url{https://github.com/tylerhou/connectfour}}{
+A connect four game GUI and AI for the CSC420 course in Java, built with negamax (a variant of minimax) plus alpha-beta pruning and a responsive, threaded UI.
+}
+\cventry{2015}{Flow}{}{}{\url{https://github.com/tylerhou/flow}}{
+A physics simulation of circles undergoing perfectly elastic collisions in CoffeeScript.
+}
+
+\section{Other}
+\cvline{interests}{fluent in Classical Latin and basic Ancient Greek; not-yet published poet and translator of questionable skill; a cappella and choir singer; Classical arch\ae ologist (\href{http://lykaionexcavation.org/}{Mt. Lykaion}).}
+
+\newpage
+\end{document}

@@ -1,0 +1,15 @@
+{{ define "main" }}
+  <main>
+    {{ range .Data.Pages.GroupBy "Section" }}
+    <h3>{{ .Key | humanize }}</h3>
+    <ul>
+      {{ range .Pages }}
+      <li>
+        <time>{{ .Date.Format .Site.Params.dateformat }}</time>
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+      </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+  </main>
+{{ end }}
