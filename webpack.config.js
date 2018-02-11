@@ -19,7 +19,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new ExtractTextPlugin("css/styles.css"),
+    new ExtractTextPlugin("css/styles.[hash].css"),
     new ManifestPlugin({
       fileName: "../../data/manifest.json",
     }),
