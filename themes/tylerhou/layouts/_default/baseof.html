@@ -9,7 +9,7 @@
       {{ end }}
     </title>
     {{ block "resources" . }}
-      <link rel="stylesheet" href="/assets/{{ index .Site.Data.manifest "main.css" }}" />
+      <style>{{ readFile (print "/public/assets/" (index .Site.Data.manifest "main.css")) | safeCSS }}</style>
     {{ end }}
   </head>
   <body>
