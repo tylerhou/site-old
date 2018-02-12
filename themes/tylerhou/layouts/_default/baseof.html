@@ -9,7 +9,7 @@
       {{ end }}
     </title>
     {{ block "resources" . }}
-      <style>{{ readFile (print "/public/assets/" (index .Site.Data.manifest "main.css")) | safeCSS }}</style>
+      <style>{{ readFile (print "/static/assets/" (index .Site.Data.manifest "main.css")) | safeCSS }}</style>
     {{ end }}
   </head>
   <body>

@@ -11,15 +11,14 @@ $break-huge:  1800px;
   box-sizing: border-box;
 }
 
-
 html, body {
-  margin: 0 8px;
   min-height: 100vh;
 }
 
 body {
   display: flex;
   flex-direction: column;
+  margin: 0 8px;
   padding: 8px 0;
   font-size: 17px;
 
@@ -89,16 +88,8 @@ body {
   }
 }
 
-sup.footnote-ref {
+sup {
   line-height: 0;
-}
-
-.footnotes > ol > li {
-  overflow-wrap: break-word;
-
-  sup {
-    line-height: 0;
-  }
 }
 
 .post {

@@ -19,5 +19,5 @@ Divestment, fighting climate change, and stopping the use of fossil fuels seem n
 
 By the way, I completely support renewable energy sources. It's just that I think that the social good Exeter provides with the money it receives from its investments probably outweighs the slight harm that investing in fossil fuels causes. I also think that since we live in a post-industrial nation, we forget that most people in the world can't afford renewables and the challenges that come with them (no solar energy at night without expensive and dangerous batteries; no wind energy if it's not windy). Fossil fuels are a much more viable way of providing energy cheaply and reliably to the masses, especially those in developing countries. I also think a much more "socially just" way of preventing or slowing down climate change is to stop wasting as much fossil-fuel-generated energy in America and other developed nations[^1]. I'm also a fan of a carbon tax (but who isn't?).
 
-[^1]: https://www.nytimes.com/2017/11/07/opinion/bipartisan-energy-efficiency.html
-[^2]: https://divestexeter.weebly.com/
+[^1]: [The New York Times](https://www.nytimes.com/2017/11/07/opinion/bipartisan-energy-efficiency.html)
+[^2]: [Divest Exeter](https://divestexeter.weebly.com/)
