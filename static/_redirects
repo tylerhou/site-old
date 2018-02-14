@@ -1,0 +1,3 @@
+# Redirect domain aliases to primary domain
+https://tylerhou.io/* https://blog.tylerhou.io/:splat 301!
+https://www.tylerhou.io/* https://blog.tylerhou.io/:splat 301!
