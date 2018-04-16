@@ -1,10 +1,10 @@
 {{ define "main" }}
   <main class="list">
     <table>
-      {{ range first 5 .Data.Pages }}
+      {{ range .Data.Pages }}
         <tr>
-          <td class="td-posted-at"><time>{{ .Date.Format .Site.Params.dateformat }}</time></td>
-          <td class="td-title"><a href="{{ .Permalink}}">{{ .Title }}</a></td>
+          <td class="posted-at"><time>{{ .Date.Format .Site.Params.dateformat }}</time></td>
+          <td class="title"><a href="{{ .Permalink}}">{{ .Title }}</a></td>
         </tr>
       {{ end }}
     </table>

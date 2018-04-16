@@ -93,26 +93,27 @@ sup {
 }
 
 .post {
-    .posted-at {
-      color: #999999;
-    }
-
-    .title {
-      margin-top: 0;
-      margin-bottom: 0.15em;
-    }
-
-    .subtitle {
-      @include italic
-      color: #333333;
-      margin-top: 0;
-      margin-bottom: 1.55em;
-    }
+  .posted-at {
+    color: #999999;
   }
 
-  .list {
-    .posted-at {
-      text-align: right;
-    }
+  .title {
+    margin-top: 0;
+    margin-bottom: 0.15em;
   }
+
+  .subtitle {
+    @include italic
+    color: #333333;
+    margin-top: 0;
+    margin-bottom: 1.55em;
+  }
+}
+
+.list {
+  .posted-at {
+    text-align: right;
+    padding-right: 0.5em;
+  }
+}
 

@@ -2,11 +2,12 @@
   <article class="post">
     <time class="posted-at">{{ .Date.Format .Site.Params.dateformat }}</time>
     <h1 class="title">{{ .Title }}</h1>
-    <p class="subtitle">
+    <section class="subtitle">
       {{ with .Params.subtitle }}
-          {{.}}
+        {{ . | markdownify }}
       {{ end }}
-    </p>
+    </section>
+    {{ "---" | markdownify }}
     <main>
       {{ .Content }}
     </main>
