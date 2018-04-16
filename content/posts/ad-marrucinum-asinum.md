@@ -32,7 +32,7 @@ I’ll pay its price in gold,
 His deed was just some accident:  
 Good will instead he holds!”  
 
-Your brother is of better sort  
+Your brother is of better mold  
 (He’s filled with charm and wit!)  
 But nonetheless I’ll take no gold,  
 No coin, no! Not one bit.  
