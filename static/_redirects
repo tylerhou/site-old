@@ -1,7 +1,8 @@
+# Redirect for RiseFreed video (must be first!)
+https://tylerhou.io/risefeed_video https://youtu.be/olZIfuW1nW4 302!
+https://www.tylerhou.io/risefeed_video https://youtu.be/olZIfuW1nW4 302!
+
 # Redirect domain aliases to primary domain
 https://tylerhou.io/* https://blog.tylerhou.io/:splat 301!
 https://www.tylerhou.io/* https://blog.tylerhou.io/:splat 301!
 https://tylerhou.netlify.com/* https://blog.tylerhou.io/:splat 301!
-
-# Redirect for RiseFreed video.
-https://tylerhou.io/risefeed_video https://youtu.be/olZIfuW1nW4 302!
