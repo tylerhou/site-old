@@ -1,17 +1,20 @@
-$break-small:  600px;
+$break-small: 600px;
 $break-medium: 900px;
 $break-large: 1200px;
-$break-huge:  1800px;
+$break-huge: 1800px;
 
 @mixin italic {
   font-style: italic;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   min-height: 100vh;
 }
 
@@ -20,7 +23,30 @@ body {
   flex-direction: column;
   margin: 0 8px;
   padding: 8px 0;
-  font-size: 17px;
+  font-size: 18px;
+  font-family: "Helvetic", "Arial", sans-serif;
+  color: #1a1a1a;
+
+  .highlight {
+    overflow-x: scroll;
+    font-size: 12px;
+    line-height: 1.25em;
+    @media screen and (min-width: $break-small) {
+      line-height: 1.3em;
+      font-size: 14px;
+    }
+  }
+
+  code {
+    display: inline-block;
+    background-color: #eff0f1;
+  }
+
+  // Block code.
+  .highlight code {
+    display: block;
+    padding: 10px;
+  }
 
   .container {
     padding-left: 8px;
@@ -28,10 +54,18 @@ body {
     flex: 1;
     margin: 0 auto;
 
-    line-height: 1.25em;
+    max-width: 100%;
+    article {
+      max-width: 100%;
+      main {
+        max-width: 100%;
+      }
+    }
+
+    line-height: 1.3em;
     @media screen and (min-width: $break-small) {
-      line-height: 1.375em;
-      width: 600px;
+      line-height: 1.4em;
+      max-width: 700px;
     }
 
     p {
@@ -39,6 +73,16 @@ body {
       @media screen and (min-width: $break-small) {
         text-align: left;
       }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: #2a2a2a;
+      margin-block-end: 0.2em;
     }
 
     h1 {
@@ -78,11 +122,19 @@ body {
       }
     }
 
-    h4, h5, h6 {
+    h4,
+    h5,
+    h6 {
       font-size: 1.125em;
       line-height: 1.11em;
       @media screen and (min-width: $break-small) {
         line-height: 1.22em;
+      }
+    }
+
+    .footnotes {
+      li {
+        margin-bottom: 0.8em;
       }
     }
   }
@@ -94,17 +146,16 @@ sup {
 
 .post {
   .posted-at {
-    color: #999999;
+    color: #888;
   }
 
   .title {
-    margin-top: 0;
+    margin-top: 0.1em;
     margin-bottom: 0.15em;
   }
 
   .subtitle {
-    @include italic
-    color: #333333;
+    color: #444;
     margin-top: 0;
     margin-bottom: 1.55em;
   }
@@ -116,4 +167,3 @@ sup {
     padding-right: 0.5em;
   }
 }
-
