@@ -34,6 +34,7 @@ puts "Hello, World!"
 ```
 
 When a C++ program runs, the `main` function is (usually) executed first.
+Here is a C++ program which prints "Hello, World!" to standard out.
 
 ```c++
 // hello.cc
@@ -145,9 +146,9 @@ main:
         push    rbp
         mov     rbp, rsp
         ; rbp is the base, or start, of the stack frame.
-        ; Write 1 to rbp-0...rbp-8  (8 bytes of storage, long)
+        ; Write 1 to rbp-0...rbp-8  (8 bytes of storage, long a)
         mov     QWORD PTR [rbp-8], 1
-        ; Write 2 to rbp-8...rbp-12 (4 bytes of storage, int)
+        ; Write 2 to rbp-8...rbp-12 (4 bytes of storage, int b)
         mov     DWORD PTR [rbp-12], 2
         ; ...
 ```
@@ -186,8 +187,8 @@ might need to dynamically create nodes for a linked list or a tree. Or, you
 might need to create an array of integers whose length is only known when your
 program runs.
 
-C++ programs generally allocate memory that is too large for the stack or whose
-size is not known at compile time on the heap.
+C++ programs allocate memory too large for the stack or whose size is not known
+at compile time on the heap.
 
 #### Allocating memory
 
@@ -197,7 +198,7 @@ operator](http://www.cplusplus.com/reference/new/operator%20new/<Paste>).
 (I say _manually_ allocate memory because C++11 provides more hygenic ways of
 allocating memory via [RAII](https://en.cppreference.com/w/cpp/language/raii).
 In idiomatic C++11, you should avoid calling `new` or `new[]` yourself. I'll
-discuss RAII later.)
+discuss RAII in a later post.)
 
 The `new` operator will return a pointer to the allocated memory, which generally
 resides on the heap.
@@ -252,3 +253,5 @@ In any case, memory leaks are usually a code smell -- a sign that your
 program's logic is incorrect or could be improved. You can use tools like
 [Clang's LeakSanitizer](https://clang.llvm.org/docs/LeakSanitizer.html) or
 [Valgrind](http://valgrind.org/) to debug memory leaks.
+
+Next time, we'll talk about pointers, references, and copying values.
