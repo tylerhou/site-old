@@ -1,7 +1,7 @@
 {{ define "main" }}
   <main class="list">
     <table>
-      {{ range .Data.Pages }}
+      {{ range .Site.RegularPages }}
         <tr>
           <td class="posted-at"><time>{{ .Date.Format .Site.Params.dateformat }}</time></td>
           <td class="title"><a href="{{ .Permalink}}">{{ .Title }}</a></td>
