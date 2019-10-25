@@ -78,7 +78,7 @@ This is the structure we want to exploit: instead of looking for 6, let's
 instead find the boundary between the two regions. Then we return the first
 element of the "true region", which is 6.
 
-An outline
+## An outline
 
 We start with two indexes, left and right. Left points to the first element and
 right points to the last element:
@@ -146,7 +146,7 @@ We then repeat this process until left and right are adjacent.
 {.array}
 |   |   |   |      |       |    |    |    |    |
 |---|---|---|------|-------|----|----|----|----|
-| 0 | 2 | 3 | {.123} 6    | 9     | 10 | 20 | 58 | 60 |
+| 0 | 2 | 3 | 6    | 9     | 10 | 20 | 58 | 60 |
 | F | F | F | T    | T     | T  | T  | T  | T  |
 |   |   |   | left | right |    |    |    |    |
 
