@@ -8,7 +8,7 @@ subtitle: I translated this poem roughly a year ago and submitted it for
   With thanks to my instructor Todd Hearon for his edits and suggestions.
 
 date: 2018-04-15T16:41:33-07:00
-draft: true
+draft: false
 ---
 
 Catullus 12  
