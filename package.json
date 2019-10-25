@@ -15,11 +15,10 @@
     "webpack-manifest-plugin": "^2.1.2"
   },
   "scripts": {
-    "build": "webpack",
-    "build:prod": "webpack -p"
+    "build": "webpack --mode=development",
+    "build:prod": "webpack --mode=production"
   },
   "devDependencies": {
-    "webpack-cli": "^3.3.9",
-    "webpack-dev-server": "^3.8.1"
+    "webpack-cli": "^3.3.9"
   }
 }

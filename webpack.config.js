@@ -2,7 +2,7 @@ let path = require("path");
 let MiniCssExtractPlugin = require("mini-css-extract-plugin");
 let ManifestPlugin = require("webpack-manifest-plugin");
 
-module.exports = {
+module.exports = (env, argv) => ({
   entry: "./src/index.js",
   output: {
     filename: "js/bundle.[hash].js",
@@ -25,5 +25,6 @@ module.exports = {
     new ManifestPlugin({
       fileName: "../../data/manifest.json"
     })
-  ]
-};
+  ],
+  mode: argv.mode
+});
