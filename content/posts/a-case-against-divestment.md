@@ -3,6 +3,7 @@ title: "A case against divestment"
 subtitle: "I originally posted this on Facebook. The following has been slightly edited."
 date: 2018-02-04T09:45:03-08:00
 draft: false
+unlisted: true
 ---
 
 I've recently seen a few posts on Facebook about a petition which asks Exeter to divest from fossil fuel investments. Many of the arguments I've read in support of divestment argue that it's the ethical and right thing to do. However, I think the situation has more nuance. Here's my case against divestment.

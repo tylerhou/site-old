@@ -13,6 +13,7 @@ subtitle: We write our first program and discuss stack and heap allocation.
   Ruby, or other languages.
 date: 2019-04-06T17:39:05-07:00
 draft: false
+unlisted: true
 ---
 
 Welcome to C++! Let's start by writing our first program.

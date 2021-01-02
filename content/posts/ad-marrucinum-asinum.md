@@ -1,14 +1,9 @@
 ---
 title: "Ad Marrucinum Asinum"
-subtitle: I translated this poem roughly a year ago and submitted it for
-  publication. It never made it into any magazines, however -- I received
-  multiple emails saying that it was "too good to print."
-
-
-  With thanks to my instructor Todd Hearon for his edits and suggestions.
-
+subtitle: With thanks to my instructor Todd Hearon for his edits and suggestions.
 date: 2018-04-15T16:41:33-07:00
 draft: false
+unlisted: false
 ---
 
 Catullus 12  

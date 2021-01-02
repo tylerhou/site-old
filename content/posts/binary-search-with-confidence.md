@@ -2,7 +2,7 @@
 title: "Binary Search with Confidence"
 date: 2019-10-21T04:26:10-07:00
 draft: false
-markup: "mmark"
+unlisted: false
 ---
 
 I've never intuitively understood binary search—at least, I've never understood
