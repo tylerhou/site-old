@@ -1,13 +1,12 @@
 ---
-title: "Ad Marrucinum Asinum"
+title: AD MARRUCINUM ASINUM
 subtitle: With thanks to my instructor Todd Hearon for his edits and suggestions.
 date: 2018-04-15T16:41:33-07:00
+code: false
+math: false
 draft: false
 unlisted: false
 ---
-
-Catullus 12  
-AD MARRUCINUM ASINUM
 
 Marrucinus, you used your hand  
 For joke and wine not well;  

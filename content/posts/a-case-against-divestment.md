@@ -2,6 +2,8 @@
 title: "A case against divestment"
 subtitle: "I originally posted this on Facebook. The following has been slightly edited."
 date: 2018-02-04T09:45:03-08:00
+code: false
+math: false
 draft: false
 unlisted: true
 ---

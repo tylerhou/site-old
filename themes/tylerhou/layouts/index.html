@@ -1,0 +1,16 @@
+{{ define "main" }}
+  <main class="list">
+    <table>
+      {{ range .Site.RegularPages }}
+        {{ if not .Params.Unlisted }}
+          <tr>
+            <td class="posted-at">
+              <time>{{ .Date.Format .Site.Params.shortdateformat }}</time>
+            </td>
+            <td class="title"><a href="{{ .RelPermalink}}">{{ .Title }}</a></td>
+          </tr>
+        {{ end }}
+      {{ end }}
+    </table>
+  </main>
+{{ end }}

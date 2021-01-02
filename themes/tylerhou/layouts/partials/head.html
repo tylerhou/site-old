@@ -1,0 +1,6 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://use.typekit.net/irw4wry.css">
+<style>
+  {{ (resources.Get "css/main.scss" | resources.ToCSS | resources.Minify).Content | safeCSS }}
+</style>

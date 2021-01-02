@@ -3,13 +3,27 @@ languageCode = "en-us"
 title = "Tyler Hou"
 theme = "tylerhou"
 
+pygmentsUseClasses = true
+
+[markup]
+  [markup.highlight]
+    style = "solarized"
+
+  [markup.goldmark.renderer]
+    unsafe = true
+
+  [markup.goldmark.extensions]
+    mathjax = true
+
 [params]
-  dateformat = "_2 Jan 2006"
+  shortdateformat = "Jan 2006"
+  dateformat = "02 Jan 2006"
 
   [params.author]
     name = "Tyler Hou"
     occupation = "Software Engineer"
     linkedin = "https://www.linkedin.com/in/tylerhou"
+
     [params.author.resume]
       pdf = "/resume.pdf"
       tex = "/resume.tex"

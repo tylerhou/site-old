@@ -1,0 +1,309 @@
+$break-small: 700px;
+$break-medium: 900px;
+$break-large: 1200px;
+$break-huge: 1800px;
+$base03: rgb(0, 43, 54);
+$base02: rgb(7, 54, 66);
+$base01: rgb(88, 110, 117);
+$base00: rgb(101, 123, 131);
+$base0: rgb(131, 148, 150);
+$base1: rgb(147, 161, 161);
+$base2: rgb(238, 232, 213);
+$base3: rgb(253, 246, 227);
+$yellow: rgb(181, 137, 0);
+$orange: rgb(203, 75, 22);
+$red: rgb(220, 50, 47);
+$magenta: rgb(211, 54, 130);
+$violet: rgb(108, 113, 196);
+$blue: rgb(38, 139, 210);
+$cyan: rgb(42, 161, 152);
+$green: rgb(133, 153, 0);
+
+/* Resets */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+pre {
+  margin: 0;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+// Push footer to bottom.
+body {
+  min-height: 100vh;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+::selection {
+  background-color: scale-color($blue, $alpha: -75%);
+}
+
+// From https://type-scale.com/
+:not(h1):not(h2):not(h3):not(h4):not(h5) + h1,
+:not(h1):not(h2):not(h3):not(h4):not(h5) + h2,
+:not(h1):not(h2):not(h3):not(h4):not(h5) + h3,
+:not(h1):not(h2):not(h3):not(h4):not(h5) + h4,
+:not(h1):not(h2):not(h3):not(h4):not(h5) + h5 {
+  margin-block-start: 3rem;
+}
+
+// Spacing between headers.
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin-block-start: 0.8rem;
+  margin-block-end: 0.38rem;
+  line-height: 1.3em;
+}
+
+h1 + :not(h1):not(h2):not(h3):not(h4):not(h5),
+h2 + :not(h1):not(h2):not(h3):not(h4):not(h5),
+h3 + :not(h1):not(h2):not(h3):not(h4):not(h5),
+h4 + :not(h1):not(h2):not(h3):not(h4):not(h5),
+h5 + :not(h1):not(h2):not(h3):not(h4):not(h5) {
+  margin-block-start: 1rem;
+}
+
+h1,
+h2 {
+  font-weight: 600;
+}
+
+h3,
+h5 {
+  font-style: italic;
+  font-weight: 400;
+}
+
+h4 {
+  font-weight: 600;
+}
+
+a.anchor:any-link {
+  position: absolute;
+  color: scale-color($base1, $lightness: +50%);
+  margin-left: -28px;
+  font-style: italic;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+a.anchor:active {
+  background-color: rbga(0, 0, 0, 0);
+}
+
+// type-scale.com
+$scale: 1.125;
+$h1: 2rem;
+$h2: $h1 / scale;
+$h3: $h2 / scale;
+$h4: $h3 / scale;
+$h5: $h4 / scale;
+h1 {
+  font-size: $h1;
+}
+h2 {
+  font-size: $h2;
+}
+h3 {
+  font-size: $h3;
+}
+h4 {
+  font-size: $h4;
+}
+h5 {
+  font-size: $h5;
+}
+
+small,
+.text_small {
+  font-size: 0.889rem;
+}
+
+body {
+  // Center in page.
+  display: flex;
+  flex-direction: column;
+
+  padding: 1em;
+  font-size: 20px;
+  font-family: "adobe-garamond-pro", serif;
+  color: scale-color($base03, $lightness: -50%);
+  background-color: scale-color($base3, $lightness: +75%);
+  text-decoration-thickness: from-font;
+}
+
+a:link {
+  color: scale-color(scale-color($blue, $lightness: -40%), $blue: +100%);
+}
+
+a:visited {
+  color: scale-color($violet, $lightness: -40%);
+}
+
+strong {
+  font-weight: 600;
+}
+
+// Inline code.
+code {
+  margin-inline-start: 0.2em;
+  margin-inline-end: 0.2em;
+}
+
+code,
+pre {
+  font-size: 0.875em;
+  font-family: "Inconsolata", monospace;
+  font-weight: 400;
+}
+
+.highlight code {
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+
+  @media screen and (min-width: $break-small) {
+    line-height: 1em;
+  }
+}
+
+.highlight {
+  overflow-x: auto;
+  line-height: 1em;
+}
+
+.highlight > .chroma {
+  padding: 0.4em 0.2em;
+  overflow-x: auto; // Color should overflow.
+}
+
+.content {
+  flex: 1;
+  line-height: 1.3em;
+
+  @media screen and (min-width: $break-small) {
+    margin: 0 auto; // Center
+    line-height: 1.4em;
+    max-width: 33em;
+  }
+}
+
+p {
+  text-align: justify;
+  @media screen and (min-width: $break-small) {
+    text-align: left;
+  }
+}
+
+.footnotes {
+  li {
+    margin-bottom: 0.8em;
+  }
+}
+
+sup {
+  line-height: 0;
+}
+
+.post {
+  .posted-at {
+    font-size: 0.9em;
+    color: $base0;
+  }
+
+  .title {
+    margin-top: 0.1em;
+    margin-bottom: 0.15em;
+  }
+
+  .subtitle {
+    font-style: italic;
+    color: $base02;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+}
+
+.list {
+  .posted-at {
+    text-align: right;
+    padding-right: 0.5em;
+    white-space: nowrap;
+    vertical-align: top;
+  }
+  table {
+    border-spacing: 2px 6px;
+    @media screen and (min-width: $break-small) {
+      border-spacing: 2px 2px;
+    }
+  }
+}
+
+// BINARY SEARCH CUSTOM CSS
+.array table {
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2em;
+
+  td {
+    padding: 0.4em;
+    width: 2.5em;
+    text-align: center;
+  }
+
+  tr:first-child td {
+    border: 1px scale-color($base2, $lightness: -20%) solid;
+    border-top: 0;
+    border-bottom: 0;
+  }
+}
+
+td:not(.bg-light-green) + td.bg-light-green {
+  border-left: 1px scale-color($base2, $lightness: -20%) solid;
+}
+
+mjx-container {
+  overflow: auto;
+}
+
+.bg-red {
+  background-color: $red;
+}
+.bg-green {
+  background-color: $green;
+}
+.bg-light-red {
+  background-color: scale-color($red, $alpha: -75%);
+}
+.bg-light-green {
+  background-color: scale-color($green, $alpha: -75%);
+}
+.red {
+  color: $red;
+}
+.green {
+  color: $green;
+}
+.dark-red {
+  color: scale-color($red, $lightness: -50%);
+}
+.dark-green {
+  color: scale-color($green, $lightness: -50%);
+}
+.heavy {
+  font-weight: 600;
+}

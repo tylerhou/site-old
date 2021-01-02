@@ -1,0 +1,50 @@
+{{ define "main" }}
+  <article class="post">
+    <time class="posted-at">{{ .Date.Format .Site.Params.dateformat }}</time>
+    <h1 class="title">{{ .Title }}</h1>
+    <section class="subtitle">
+      {{ with .Params.subtitle }}
+        {{ . | markdownify }}
+      {{ end }}
+    </section>
+    <main>
+      {{ .Content }}
+    </main>
+  </article>
+{{ end }}
+
+{{ define "title" }}
+  {{ .Title }}
+{{ end }}
+
+{{ define "styles" }}
+  {{ if .Params.code }}
+    {{ (resources.Get "css/solarized-light.css" | resources.Minify).Content | safeCSS }}
+  {{ end }}
+{{ end }}
+
+{{ define "resources" }}
+  {{ if .Params.code }}
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+  {{ end }}
+{{ end }}
+
+{{ define "js" }}
+  {{ if .Params.math }}
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  {{ end }}
+  <script>
+    ["h1", "h2", "h3", "h4", "h5"].forEach((tag) => {
+      Array.from(document.getElementsByTagName(tag)).forEach((element) => {
+        if (element.classList.contains("title")) return;
+        var link = document.createElement("a");
+        link.innerText = "#";
+        link.href = "#" + element.id;
+        link.classList.add("anchor");
+        element.prepend(link);
+      });
+    });
+  </script>
+{{ end }}
