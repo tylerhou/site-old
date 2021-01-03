@@ -1,6 +1,6 @@
 ---
 title: "Style Test"
-subtitle:
+subtitle: Subtitle subtitle subtitle.
 date: 2021-01-02T08:51:10-08:00
 code: true
 math: true

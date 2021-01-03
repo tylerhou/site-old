@@ -7,6 +7,9 @@
         {{ . | markdownify }}
       {{ end }}
     </section>
+    <noscript>
+      <p class="italic">Some content may not display properly with JavaScript disabled.</p>
+    </noscript>
     <main>
       {{ .Content }}
     </main>
