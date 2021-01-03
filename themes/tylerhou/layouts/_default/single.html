@@ -26,7 +26,17 @@
 {{ define "resources" }}
   {{ if .Params.code }}
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+  {{ end }}
+  {{ if .Params.math }}
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ["\\(","\\)"]],
+          processEscapes: true,
+        }
+      };
+    </script>
   {{ end }}
 {{ end }}
 

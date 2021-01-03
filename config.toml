@@ -8,6 +8,9 @@ pygmentsUseClasses = true
 [markup]
   [markup.highlight]
     style = "solarized"
+    lineNos = true
+    lineNumbersInTable = true
+    tabWidth = 2
 
   [markup.goldmark.renderer]
     unsafe = true

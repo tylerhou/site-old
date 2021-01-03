@@ -142,7 +142,7 @@ body {
   font-size: 20px;
   font-family: "adobe-garamond-pro", serif;
   color: scale-color($base03, $lightness: -50%);
-  background-color: scale-color($base3, $lightness: +75%);
+  background-color: scale-color($base3, $lightness: +80%);
   text-decoration-thickness: from-font;
 }
 
@@ -160,8 +160,8 @@ strong {
 
 // Inline code.
 code {
-  margin-inline-start: 0.2em;
-  margin-inline-end: 0.2em;
+  margin-inline-start: 0em;
+  margin-inline-end: 0em;
 }
 
 code,
@@ -188,6 +188,11 @@ pre {
 .highlight > .chroma {
   padding: 0.4em 0.2em;
   overflow-x: auto; // Color should overflow.
+}
+
+// Fix one-line codeblock on Firefox.
+.chroma .lnt:only-child {
+  display: inline-block;
 }
 
 .content {
@@ -252,6 +257,25 @@ sup {
   }
 }
 
+.text-center {
+  text-align: center;
+}
+
+.italic {
+  font-style: italic;
+}
+
+ol ol {
+  list-style-type: lower-alpha;
+}
+ol ol ol {
+  list-style-type: lower-roman;
+}
+
+.math.inline {
+  margin: 0 2px;
+}
+
 // BINARY SEARCH CUSTOM CSS
 .array table {
   border-collapse: collapse;
@@ -277,7 +301,7 @@ td:not(.bg-light-green) + td.bg-light-green {
 }
 
 mjx-container {
-  overflow: auto;
+  overflow-x: auto;
 }
 
 .bg-red {
@@ -287,10 +311,10 @@ mjx-container {
   background-color: $green;
 }
 .bg-light-red {
-  background-color: scale-color($red, $alpha: -75%);
+  background-color: scale-color($red, $alpha: -60%);
 }
 .bg-light-green {
-  background-color: scale-color($green, $alpha: -75%);
+  background-color: scale-color($green, $alpha: -60%);
 }
 .red {
   color: $red;

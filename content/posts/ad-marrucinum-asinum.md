@@ -1,6 +1,7 @@
 ---
 title: AD MARRUCINUM ASINUM
-subtitle: With thanks to my instructor Todd Hearon for his edits and suggestions.
+subtitle: "A translation of Catullus 12.<br/>
+  With thanks to my instructor Todd Hearon for his edits and suggestions."
 date: 2018-04-15T16:41:33-07:00
 code: false
 math: false
@@ -50,4 +51,4 @@ Of friends I miss and love.
 Yes, Fabullus and Veranius  
 Brought it, a gift, to me,  
 And loved, like how I once loved them,  
-The napkin, it must be.
+My napkin, it must be.

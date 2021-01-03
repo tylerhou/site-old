@@ -31,25 +31,107 @@ minutes thinking through all the edge cases: arrays of size 0, 1, 2, 3, arrays
 without the desired element, etc.
 
 There's a different binary search algorithm that I find much easier to
-understand and prove correct. Before we look at code, though, I want to discuss
-some techniques that will prove useful.
+understand.
 
 ## Background
 
+### Invariants
+
+To prove that our new binary search algorithm is correct, we will use a
+invariant. An invariant is a statement of system that remains true under
+"valid" transformations. If that's too abstract, consider this statement:
+
+<p class="text-center">I am younger than my parent.</p>
+
+Or, more precisely,
+
+$$
+\text{myAgeInSeconds} < \text{parent'sAgeInSeconds}
+$$
+
+Is this an invariant? Yes, and no: it depends on the allowed transformations.
+If one allows only the following transformation:
+
+```python {linenos=table}
+def oneSecondPasses():
+    myAgeInSeconds += 1
+    parentsAgeInSeconds += 1
+```
+
+Then yes, the statement is an invariant. We can prove this with a technique
+called [_induction_](https://en.wikipedia.org/wiki/Mathematical_induction).
+Inductive arguments consist of two proofs: a base case, and an inductive step.
+
+Informally, we will show that at one point the statement was true (that I was
+once younger than my parent at time $N$). This is the base case. Then we will
+show that if I am younger than my parent at time $X$, then after a
+transformation (a second passing), I will still be younger than my parent at
+time $X + 1$ (the inductive step).
+
+If we can prove these two things, then we can show that the statement is true
+for all times $T \geq N$ by repeatedly applying the inductive step to the base
+case.
+
+#### The base case
+
+We prove that I was younger than my parent at some time $N$.
+
+1. By definition, when I was born, my age in seconds was $0$. Call this time $N$.
+1. From the definition of "parent," my parent's age in seconds was greater than zero when I was born.
+1. Therefore, when I was born, $0 = \text{myAge} < \text{parent'sAge}$.
+
+#### The inductive step
+
+Then, we need to prove that the passage of time does not change this invariant.
+With the following reasoning, we prove that _if_ the invariant is true at time
+$N$, then it _will still_ be true at time $N + 1$ (after one second passes):
+
+1. Assume $\text{myAge} < \text{parent'sAge}$.
+1. One second passes. So we set:
+   1. $\text{nextMyAge} := \text{myAge} + 1$
+   1. $\text{nextParent'sAge} := \text{parent'sAge} + 1$
+1. We want to prove: $\text{nextMyAge} \stackrel{?}{<} \text{nextParent'sAge}$?
+1. By (2), (3) is equivalent to $\text{myAge} + 1 \stackrel{?}{<} \text{parent'sAge} + 1$.
+1. We are allowed to subtract $1$ from both sides of the above inequality,
+   producing $\text{myAge} \stackrel{?}{<} \text{parent'sAge}$. This is what we
+   assumed in (1), so it is true.
+
+It should now be clear that for any time $T \geq N$, the property _I am younger
+than my parent_ ($P$) is true---in other words, for all times $T \geq N$, the property
+is invariant. Informally, we could argue:
+
+1. Suppose $T \geq N$. We want to show $P$ is true at time $T$.
+1. (1) implies there exists some finite $X$ where $N + X = T$.
+1. We know $P$ is true at time $N$.
+1. By the inductive step, we then know $P$ is true at time $N + 1$.
+1. Again by the inductive step, we know $P$ is true at time $N + 2$.
+1. By repeating the inductive step finitely many times, we can show that $P$ is true at time $N + X$.
+1. Thus, $P$ is true at time $T$.
+
+#### Transformations
+
+If you have watched the documentary _Interstellar_, you will know that our
+transformation does not accurately represent time in the real world. Time passes
+differently for someone who is accelerating or who is under a gravitational
+field. If my parent jumped in a rocket ship and accelerated away from Earth at
+relativistic speeds, they would experience time "slower" then me. Then, when
+they returned, I might be older than them.
+
+The point is: invariants are not properties of just a system -- they also
+depend on the available transformations of that system. In the system
+$(\text{me}, \text{parent})$ with the set of transformations
+$\{\text{oneSecondPasses}\}$, our relative ages are invariant. But add the
+transformation $\text{rocketShipAdventure}$, and they are not.
+
 ### Loop invariants
 
-To prove that our new binary search algorithm is correct, we will use a loop
-invariant. Loosely, invariants are properties of a system that remain true
-under "valid" transformations of the system. A common way to show that a property $A$ is an invariant is to
-first show that it is true. Then, we show that
+Informally, loop invariants are properties of a loop that remain unchanged as
+the loop executes. More formally, the system in question might be the state of
+the loop variables, and the transformation might be one loop iteration.
 
-That might sound a bit abstract, so here
-are some examples:
+For example, consider the following loop which prints every element in an array:
 
-1. Invariant: my older sibling will always be older than me.
-   1. Initial state: older sibling is older than me
-
-```java {linenos=table}
+```java
 void print_array(A) {
   for (int i = 0; i < A.length; ++i) {
     print(A[i]);
@@ -57,13 +139,13 @@ void print_array(A) {
 }
 ```
 
-We know the above code is likely correct because we know that our array
-accesses will stay in bounds. The key loop invariant that tells us that is the
-invariant `0 <= i < A.length`. We know that `i` is always greater than zero
-because we initialize `i` to 0 and only increment it. And we also know that if
-`i` was greater than or equal to `A.length`, the loop would have terminated.
+Our system is $(i, \text{A.length}, \text{A})$. Two invariants of this system
+for the duration of the loop are $0 \leq i$ and $i \lt \text{A.length}$.
+We know that `i` is always greater than zero because we initialize `i` to 0
+and only increment it. And we also know that if `i` was greater than or equal
+to `A.length`, the loop would have terminated.
 
-### Reframing the problem
+### Reframing binary search
 
 Suppose we want to find the index of 6 in the following (sorted) array:
 
@@ -89,45 +171,45 @@ is greater than or equal to 6:
 
 Since this array is sorted, we find a region of false elements followed by a
 region of true elements. Notice that the 6 is the first true element, and
-thus lies on the boundary between the true elements and false elements—the
-numbers less than 6 and the numbers greater than or equal to 6
+thus lies on the boundary between the true elements and false elements---the
+numbers less than 6 and the numbers greater than or equal to 6.
 
 This is the structure we want to exploit: instead of looking for 6, let's
-instead find the boundary between the two regions. Then we return the first
-element of the "true region", which is 6.
+instead find the boundary between the two "true" and "false" regions. Then we
+return the first element of the true region.
 
 ### An outline
 
-We start with two indexes, left and right. Left points to the first element and
-right points to the last element:
+We start with two indexes, `left` and `right`. `left` points to the first element and
+`right` points to the last element:
 
 <div class="array">
 
-|      |     |     |     |     |     |     |     |       |
-| ---- | --- | --- | --- | --- | --- | --- | --- | ----- |
-| 0    | 2   | 3   | 6   | 9   | 10  | 20  | 58  | 60    |
-| F    | F   | F   | T   | T   | T   | T   | T   | T     |
-| left |     |     |     |     |     |     |     | right |
+|        |     |     |     |     |     |     |     |         |
+| ------ | --- | --- | --- | --- | --- | --- | --- | ------- |
+| 0      | 2   | 3   | 6   | 9   | 10  | 20  | 58  | 60      |
+| F      | F   | F   | T   | T   | T   | T   | T   | T       |
+| `left` |     |     |     |     |     |     |     | `right` |
 
 </div>
 
-This sets up our loop invariant: left always points to a false element, and
-right always points to a true element. We want to our left and right indexes
-closer to each other, while maintaining the invariant. Next, we consider the
-middle element:
+This sets up our loop invariant: at the end of each loop iteration `left`
+always points to a false element, and `right` always points to a true element.
+We want to our left and right indexes closer to each other while maintaining
+the invariant. Next, we consider the `middle` element:
 
 <div class="array">
 
-|      |     |     |     |        |     |     |     |       |
-| ---- | --- | --- | --- | ------ | --- | --- | --- | ----- |
-| 0    | 2   | 3   | 6   | 9      | 10  | 20  | 58  | 60    |
-| F    | F   | F   | T   | T      | T   | T   | T   | T     |
-| left |     |     |     | middle |     |     |     | right |
+|        |     |     |     |          |     |     |     |         |
+| ------ | --- | --- | --- | -------- | --- | --- | --- | ------- |
+| 0      | 2   | 3   | 6   | 9        | 10  | 20  | 58  | 60      |
+| F      | F   | F   | T   | T        | T   | T   | T   | T       |
+| `left` |     |     |     | `middle` |     |     |     | `right` |
 
 </div>
 
-If middle element corresponds to a false value, we move `left` to middle.
-Otherwise, if it corresponds to a true value, we move `right` to the middle. In
+If middle element corresponds to a false value, we assign `left := middle`.
+Otherwise, if it corresponds to a true value, we assign `right := middle`. In
 either case, our loop invariant is preserved.
 
 In this case, the middle element corresponds to true, so we move `right` to
@@ -135,69 +217,69 @@ the middle.
 
 <div class="array">
 
-|      |     |     |     |       |     |     |     |     |
-| ---- | --- | --- | --- | ----- | --- | --- | --- | --- |
-| 0    | 2   | 3   | 6   | 9     | 10  | 20  | 58  | 60  |
-| F    | F   | F   | T   | T     | T   | T   | T   | T   |
-| left |     |     |     | right |     |     |     |     |
+|        |     |     |     |         |     |     |     |     |
+| ------ | --- | --- | --- | ------- | --- | --- | --- | --- |
+| 0      | 2   | 3   | 6   | 9       | 10  | 20  | 58  | 60  |
+| F      | F   | F   | T   | T       | T   | T   | T   | T   |
+| `left` |     |     |     | `right` |     |     |     |     |
 
 </div>
 
-We pick the new middle element halfway between left and right:
+We pick the new middle element halfway between `left` and right:
 
 <div class="array">
 
-|      |     |        |     |       |     |     |     |     |
-| ---- | --- | ------ | --- | ----- | --- | --- | --- | --- |
-| 0    | 2   | 3      | 6   | 9     | 10  | 20  | 58  | 60  |
-| F    | F   | F      | T   | T     | T   | T   | T   | T   |
-| left |     | middle |     | right |     |     |     |     |
+|        |     |          |     |         |     |     |     |     |
+| ------ | --- | -------- | --- | ------- | --- | --- | --- | --- |
+| 0      | 2   | 3        | 6   | 9       | 10  | 20  | 58  | 60  |
+| F      | F   | F        | T   | T       | T   | T   | T   | T   |
+| `left` |     | `middle` |     | `right` |     |     |     |     |
 
 </div>
 
-Since this middle is false, we move `left` to middle.
+Since this middle corresponds to false, we assign `left := middle`.
 
 <div class="array">
 
-|     |     |      |     |       |     |     |     |     |
-| --- | --- | ---- | --- | ----- | --- | --- | --- | --- |
-| 0   | 2   | 3    | 6   | 9     | 10  | 20  | 58  | 60  |
-| F   | F   | F    | T   | T     | T   | T   | T   | T   |
-|     |     | left |     | right |     |     |     |     |
+|     |     |        |     |         |     |     |     |     |
+| --- | --- | ------ | --- | ------- | --- | --- | --- | --- |
+| 0   | 2   | 3      | 6   | 9       | 10  | 20  | 58  | 60  |
+| F   | F   | F      | T   | T       | T   | T   | T   | T   |
+|     |     | `left` |     | `right` |     |     |     |     |
 
 </div>
 
-We then repeat this process until left and right are adjacent.
+We then repeat this process until `left` and `right` are adjacent.
 
 <div class="array">
 
-|     |     |      |        |       |     |     |     |     |
-| --- | --- | ---- | ------ | ----- | --- | --- | --- | --- |
-| 0   | 2   | 3    | 6      | 9     | 10  | 20  | 58  | 60  |
-| F   | F   | F    | T      | T     | T   | T   | T   | T   |
-|     |     | left | middle | right |     |     |     |     |
+|     |     |        |          |         |     |     |     |     |
+| --- | --- | ------ | -------- | ------- | --- | --- | --- | --- |
+| 0   | 2   | 3      | 6        | 9       | 10  | 20  | 58  | 60  |
+| F   | F   | F      | T        | T       | T   | T   | T   | T   |
+|     |     | `left` | `middle` | `right` |     |     |     |     |
 
 </div>
 
 <div class="array">
 
-|     |     |      |       |     |     |     |     |     |
-| --- | --- | ---- | ----- | --- | --- | --- | --- | --- |
-| 0   | 2   | 3    | 6     | 9   | 10  | 20  | 58  | 60  |
-| F   | F   | F    | T     | T   | T   | T   | T   | T   |
-|     |     | left | right |     |     |     |     |     |
+|     |     |        |         |     |     |     |     |     |
+| --- | --- | ------ | ------- | --- | --- | --- | --- | --- |
+| 0   | 2   | 3      | 6       | 9   | 10  | 20  | 58  | 60  |
+| F   | F   | F      | T       | T   | T   | T   | T   | T   |
+|     |     | `left` | `right` |     |     |     |     |     |
 
 </div>
 
 When `left` and `right` are right next to each other, we know that `right`
-points to the first element greater than or equal to 6. We return the index of
-the first true element,`right`, which is 3.
+points to the first element greater than or equal to 6. We thus return the
+index of the first true element, 3.
 
 ## The algorithm
 
 Let's walk through the algorithm line by line:
 
-```python {linenos=table}
+```python {linenos=table,linenostart=1}
 def binary_search(left, right, unary_op):
 ```
 
@@ -206,7 +288,7 @@ Our function takes in our left and right indexes and a `unary_op`. What is
 whether that element corresponds to true or false. In the above example
 where we look for 6, `unary_op` behaves like:
 
-```python {linenos=false}
+```python {linenos=table}
 unary_op(0)  # False, because array[0] == 0  and 0 < 6
 unary_op(2)  # False, because array[2] == 3  and 3 < 6
 unary_op(3)  # True,  because array[3] == 6  and 6 >= 6
@@ -216,14 +298,13 @@ unary_op(7)  # True,  because array[7] == 58 and 58 >= 6
 We write binary search in this manner because **binary search is a more general
 algorithm than finding a number in a sorted list**—in fact, we can apply it to
 any search problem whose search space is a range of numbers and the elements
-in the range correspond to contiguous false and true regions. I'll write about
-non-array binary searches in a followup post.
+in the range correspond to contiguous false and true regions.
 
-The next few lines check our boundary conditions. Just as we must build a solid
-foundation before we build a house, we must make sure that our invariants are
-initially valid before we start looping:
+The next few lines check our boundary conditions---the base case of our
+induction.
 
-```python
+```python {linenos=table,linenostart=2}
+  # Check edge cases.
   if not array or not left < right:
     return None
 
@@ -242,15 +323,16 @@ initially valid before we start looping:
 
 Another way of thinking about the left and right checks are that they detect if
 the whole array corresponds to all true or false. In those cases, we need to
-return the first element (if all true) or one past the end (if all false). I'll
-explain why we return one-past-the-end if the array corresponds to all false
-soon.
+return the first element (if all true) or one past the end (if all false). (If
+the whole array corresponds to false, we can imagine that the first "true"
+element is one past the end.)
 
-Then we write our main loop. Our main loop picks the middle element of left and
-right. If it's false, then it moves left to the middle. If it's true, it moves
-right to the middle. Again, this preserves our invariant.
+Then we write our main loop. Our main loop picks the element in the middle of
+`left` and `right`. If it's false, then it moves `left` to the middle. If it's
+true, it moves `right` to the middle. Again, this preserves our invariant.
 
-```python
+```python {linenos=table,linenostart=18}
+  # Main loop which narrows our search range.
   while left + 1 != right:
     middle = (left + right) / 2
     if unary_op(middle):
@@ -259,37 +341,38 @@ right to the middle. Again, this preserves our invariant.
       left = middle
 ```
 
-Lastly, we want to return the first true element, which should be right—when we
-exit the loop, `left = right - 1` (that's the loop exit condition), and since
-`left` always points to false and `right` always points to true, we know that
+Lastly, we want to return the first true element, which should be `right`. We
+`right` is the first true element because the loop only exits when `left` is
+directly adjacent to it. Since `left` only points to false elements, we know
 `right` is the first true element.
 
-```python
+```python {linenos=table,linenostart=26}
   return right
 ```
 
-Next, let's write `left_find_in_sorted_array`. We prefix it with `left` because
+Next, let's write `left_find_in_sorted_array`. We prefix it with "left" because
 if the searched-for element is in the array multiple times, we return the
 leftmost.
 
-```python
+```python {linenos=table,linenostart=28}
 def left_find_in_sorted_array(array, lookfor):
 ```
 
 We need to define our unary_op function:
 
-```python
+```python {linenos=table,linenostart=30}
   def unary_op(element_idx):
     return array[element_idx] >= lookfor
 ```
 
-Let's quickly check this function's correctness: if `lookfor = 6` and
-`array[element_idx] = 5`, then `unary_op` returns `False`, and if
-`array[element_idx] = 6`, then `unary_op` returns true, which is what we want.
+Let's quickly check this function's correctness:
+
+- If `lookfor = 6` and `array[element_idx] = 5`, then `unary_op` returns `False`.
+- If `lookfor = 6` and `array[element_idx] = 6`, then `unary_op` returns `True`.
 
 And to finish it off, we call `binary_search`:
 
-```python
+```python {linenos=table,linenostart=33}
   left = 0
   right = array.length - 1
   return binary_search(left, right, unary_op)
@@ -315,7 +398,7 @@ def binary_search(left, right, unary_op):
     # might be one after the end.
     return array.length
 
-  # Main loop which keeps tightening our search range.
+  # Main loop which narrows our search range.
   while left + 1 != right:
     middle = (left + right) / 2
     if unary_op(middle):
@@ -344,41 +427,41 @@ true.
 
 <div class="array">
 
-|      |     |     |     |     |     |     |     |       |
-| ---- | --- | --- | --- | --- | --- | --- | --- | ----- |
-| 0    | 2   | 3   | 6   | 9   | 10  | 20  | 58  | 60    |
-| F    | F   | F   | T   | T   | T   | T   | T   | T     |
-| left |     |     |     |     |     |     |     | right |
+|        |     |     |     |     |     |     |     |         |
+| ------ | --- | --- | --- | --- | --- | --- | --- | ------- |
+| 0      | 2   | 3   | 6   | 9   | 10  | 20  | 58  | 60      |
+| F      | F   | F   | T   | T   | T   | T   | T   | T       |
+| `left` |     |     |     |     |     |     |     | `right` |
 
 </div>
 
 <div class="array">
 
-|      |     |     |     |       |     |     |     |     |
-| ---- | --- | --- | --- | ----- | --- | --- | --- | --- |
-| 0    | 2   | 3   | 6   | 9     | 10  | 20  | 58  | 60  |
-| F    | F   | F   | T   | T     | T   | T   | T   | T   |
-| left |     |     |     | right |     |     |     |     |
+|        |     |     |     |         |     |     |     |     |
+| ------ | --- | --- | --- | ------- | --- | --- | --- | --- |
+| 0      | 2   | 3   | 6   | 9       | 10  | 20  | 58  | 60  |
+| F      | F   | F   | T   | T       | T   | T   | T   | T   |
+| `left` |     |     |     | `right` |     |     |     |     |
 
 </div>
 
 <div class="array">
 
-|     |     |      |     |       |     |     |     |     |
-| --- | --- | ---- | --- | ----- | --- | --- | --- | --- |
-| 0   | 2   | 3    | 6   | 9     | 10  | 20  | 58  | 60  |
-| F   | F   | F    | T   | T     | T   | T   | T   | T   |
-|     |     | left |     | right |     |     |     |     |
+|     |     |        |     |         |     |     |     |     |
+| --- | --- | ------ | --- | ------- | --- | --- | --- | --- |
+| 0   | 2   | 3      | 6   | 9       | 10  | 20  | 58  | 60  |
+| F   | F   | F      | T   | T       | T   | T   | T   | T   |
+|     |     | `left` |     | `right` |     |     |     |     |
 
 </div>
 
 <div class="array">
 
-|     |     |      |       |     |     |     |     |     |
-| --- | --- | ---- | ----- | --- | --- | --- | --- | --- |
-| 0   | 2   | 3    | 6     | 9   | 10  | 20  | 58  | 60  |
-| F   | F   | F    | T     | T   | T   | T   | T   | T   |
-|     |     | left | right |     |     |     |     |     |
+|     |     |        |         |     |     |     |     |     |
+| --- | --- | ------ | ------- | --- | --- | --- | --- | --- |
+| 0   | 2   | 3      | 6       | 9   | 10  | 20  | 58  | 60  |
+| F   | F   | F      | T       | T   | T   | T   | T   | T   |
+|     |     | `left` | `right` |     |     |     |     |     |
 
 </div>
 
@@ -405,9 +488,6 @@ falses—since the entire array is less than the desired element, then we would
 want to insert the element at the end, which is the same as inserting at
 array.length.
 
-Check back for part two, where I'll explain how binary search can be applied to
-problems besides sorted-array problems.
-
 <script>
 Array.from(document.getElementsByTagName("td")).forEach((element) => {
   if (element.innerText === "F") {
@@ -415,9 +495,9 @@ Array.from(document.getElementsByTagName("td")).forEach((element) => {
   } else if (element.innerText === "T") {
     element.classList.add("bg-light-green");
   } else if (element.innerText === "left") {
-    element.classList.add("dark-red", "heavy");
+    element.classList.add("dark-red", "heavy", "small");
   } else if (element.innerText === "right") {
-    element.classList.add("dark-green", "heavy");
+    element.classList.add("dark-green", "heavy", "small");
   }
 });
 </script>
