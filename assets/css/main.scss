@@ -66,7 +66,7 @@ h4,
 h5 {
   margin-block-start: 0.8rem;
   margin-block-end: 0.38rem;
-  line-height: 1.3em;
+  line-height: 1.18em;
 }
 
 h1 + :not(h1):not(h2):not(h3):not(h4):not(h5),
@@ -160,12 +160,8 @@ strong {
 
 // Inline code.
 code {
-  margin-inline-start: 0em;
-  margin-inline-end: 0em;
-}
-
-code,
-pre {
+  margin-inline-start: 0;
+  margin-inline-end: 0;
   font-size: 0.875em;
   font-family: "Inconsolata", monospace;
   font-weight: 400;
@@ -174,6 +170,11 @@ pre {
 .highlight code {
   margin-inline-start: 0;
   margin-inline-end: 0;
+  font-size: 0.765em;
+
+  // Safari on iOS increases text side for code blocks if they are too wide.
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: none;
 
   @media screen and (min-width: $break-small) {
     line-height: 1em;
@@ -230,15 +231,18 @@ sup {
   }
 
   .title {
-    margin-top: 0.1em;
-    margin-bottom: 0.15em;
+    margin-block-start: 0.4rem;
   }
 
   .subtitle {
     font-style: italic;
     color: $base02;
-    margin-top: 0;
-    margin-bottom: 1em;
+    margin-block-start: 0.7rem;
+    margin-block-end: 1rem;
+  }
+
+  main {
+    margin-block-start: 2.5rem;
   }
 }
 
