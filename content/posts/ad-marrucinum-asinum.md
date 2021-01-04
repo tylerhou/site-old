@@ -1,18 +1,13 @@
 ---
-title: "Ad Marrucinum Asinum"
-subtitle: I translated this poem roughly a year ago and submitted it for
-  publication. It never made it into any magazines, however -- I received
-  multiple emails saying that it was "too good to print."
-
-
-  With thanks to my instructor Todd Hearon for his edits and suggestions.
-
+title: AD MARRUCINUM ASINUM
+subtitle: "A translation of Catullus 12.<br/>
+  With thanks to my instructor Todd Hearon for his edits and suggestions."
 date: 2018-04-15T16:41:33-07:00
+code: false
+math: false
 draft: false
+unlisted: false
 ---
-
-Catullus 12  
-AD MARRUCINUM ASINUM
 
 Marrucinus, you used your hand  
 For joke and wine not well;  
@@ -56,4 +51,4 @@ Of friends I miss and love.
 Yes, Fabullus and Veranius  
 Brought it, a gift, to me,  
 And loved, like how I once loved them,  
-The napkin, it must be.
+My napkin, it must be.

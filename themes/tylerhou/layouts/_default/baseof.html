@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{ partial "head.html" . }}
     <title>
       {{ block "title" . }}
         {{ .Site.Title }}
       {{ end }}
     </title>
+    <style>
+      {{ block "styles" . }}
+
+      {{ end }}
+    </style>
     {{ block "resources" . }}
-      <style>{{ readFile (print "/static/assets/" (index .Site.Data.manifest "main.css")) | safeCSS }}</style>
+
     {{ end }}
   </head>
   <body>
-    <div class="container">
+    {{ partial "header" . }}
+    <div class="content">
       {{ block "main" . }}
+
       {{ end }}
     </div>
     {{ partial "footer" . }}
+    {{ block "js" . }}
+
+    {{ end }}
   </body>
 </html>

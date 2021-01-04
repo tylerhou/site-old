@@ -12,7 +12,10 @@ subtitle: We write our first program and discuss stack and heap allocation.
   the content will still be useful for those who come from Java, JavaScript,
   Ruby, or other languages.
 date: 2019-04-06T17:39:05-07:00
+code: true
+math: false
 draft: false
+unlisted: true
 ---
 
 Welcome to C++! Let's start by writing our first program.

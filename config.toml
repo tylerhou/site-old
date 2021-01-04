@@ -1,0 +1,32 @@
+baseURL = "https://blog.tylerhou.io/"
+languageCode = "en-us"
+title = "Tyler Hou"
+theme = "tylerhou"
+
+pygmentsUseClasses = true
+
+[markup]
+  [markup.highlight]
+    style = "solarized"
+    lineNos = true
+    lineNumbersInTable = true
+    tabWidth = 2
+
+  [markup.goldmark.renderer]
+    unsafe = true
+
+  [markup.goldmark.extensions]
+    mathjax = true
+
+[params]
+  shortdateformat = "Jan 2006"
+  dateformat = "02 Jan 2006"
+
+  [params.author]
+    name = "Tyler Hou"
+    occupation = "Software Engineer"
+    linkedin = "https://www.linkedin.com/in/tylerhou"
+
+    [params.author.resume]
+      pdf = "/resume.pdf"
+      tex = "/resume.tex"

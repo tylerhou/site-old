@@ -2,10 +2,14 @@
   <main class="list">
     <table>
       {{ range .Site.RegularPages }}
-        <tr>
-          <td class="posted-at"><time>{{ .Date.Format .Site.Params.dateformat }}</time></td>
-          <td class="title"><a href="{{ .Permalink}}">{{ .Title }}</a></td>
-        </tr>
+        {{ if not .Params.Unlisted }}
+          <tr>
+            <td class="posted-at">
+              <time>{{ .Date.Format .Site.Params.shortdateformat }}</time>
+            </td>
+            <td class="title"><a href="{{ .RelPermalink}}">{{ .Title }}</a></td>
+          </tr>
+        {{ end }}
       {{ end }}
     </table>
   </main>
