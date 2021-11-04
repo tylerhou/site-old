@@ -6,6 +6,9 @@ code: false
 math: false
 draft: false
 unlisted: true
+_build:
+  list: false
+  render: true
 ---
 
 I've recently seen a few posts on Facebook about a petition which asks Exeter to divest from fossil fuel investments. Many of the arguments I've read in support of divestment argue that it's the ethical and right thing to do. However, I think the situation has more nuance. Here's my case against divestment.

@@ -16,6 +16,9 @@ code: true
 math: false
 draft: false
 unlisted: true
+_build:
+  list: false
+  render: false
 ---
 
 Welcome to C++! Let's start by writing our first program.

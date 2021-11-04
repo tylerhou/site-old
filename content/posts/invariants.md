@@ -6,6 +6,9 @@ code: true
 math: true
 draft: false
 unlisted: true
+_build:
+  list: false
+  render: true
 ---
 
 An invariant is a statement of system that remains true under "valid"

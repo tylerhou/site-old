@@ -6,6 +6,8 @@ code: true
 math: true
 draft: true
 unlisted: true
+_build:
+  list: false
 ---
 
 ```javascript {linenos=table,linenostart=10}
