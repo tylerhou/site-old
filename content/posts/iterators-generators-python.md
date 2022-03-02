@@ -47,6 +47,7 @@ while True:
     print(i)
 ```
 
+
 ### Uses
 
 Iterators are useful when you need to process a sequence of values in order.
@@ -80,6 +81,39 @@ iterators.
 
 If this is too abstract, we'll see concrete examples below and in the practice
 problems.
+
+
+### Iterable vs. Iterator
+
+Python also has an "iterable" interface. Iterables are generally objects that
+can be iterated over, like lists, sets, dictionaries, and even the `range`
+object. Iterables implement the `__iter__` method (which constructs a new
+iterator from the iterable).
+
+Iterables are not to be confused with iterators! Iterables are not necessary
+iterators, and iterators are not necessarily iterables.
+
+Also, Python will error if you call `next` on a non-iterator even if it is an
+iterable, so be careful if you receive an sequence and you want to treat it
+like an iterator! It might be just an iterable, so always convert it to an
+iterator first using `iter`. (If it's already an iterator, `iter` will return
+it as is.)
+
+
+```python
+# These all error!
+next([1, 2, 3])
+next(set([1, 2, 3]))
+next(range(3))
+
+# These don't.
+next(iter([1, 2, 3]))       # 1
+next(iter(set([1, 2, 3])))  # 1
+it = iter(range(3))
+next(it)                    # 0
+next(iter(it))              # 1
+```
+
 
 ## Generators
 
@@ -116,7 +150,9 @@ for i in fn():
 # 3
 ```
 
+
 ### Uses
+
 
 #### Outputting a sequence of values
 One basic use for a generator is for a function that returns a list of values:
@@ -146,6 +182,7 @@ The downside is that the extra communication overhead can be worse for
 performance overall. (But it's important to measure your code's performance
 before you optimize!)
 
+
 #### Data Structures
 
 In a similar vein, generators can be used to implement iterators for custom
@@ -166,37 +203,6 @@ def inorder_travseral(tree):
     yield from inorder_traversal(tree.right)
 ```
 
-
-#### Iterable vs. Iterator
-
-Python also has an "iterable" interface. Iterables are generally objects that
-can be iterated over, like lists, sets, dictionaries, and even the `range`
-object. Iterables implement the `__iter__` method (which constructs a new
-iterator from the iterable).
-
-Iterables are not to be confused with iterators! Iterables are not necessary
-iterators, and iterators are not necessarily iterables.
-
-Also, Python will error if you call `next` on a non-iterator even if it is an
-iterable, so be careful if you receive an sequence and you want to treat it
-like an iterator! It might be just an iterable, so always convert it to an
-iterator first using `iter`. (If it's already an iterator, `iter` will return
-it as is.)
-
-
-```python
-# These all error!
-next([1, 2, 3])
-next(set([1, 2, 3]))
-next(range(3))
-
-# These don't.
-next(iter([1, 2, 3]))       # 1
-next(iter(set([1, 2, 3])))  # 1
-it = iter(range(3))
-next(it)                    # 0
-next(iter(it))              # 1
-```
 
 #### Laziness
 
@@ -237,6 +243,7 @@ Many of these solutions involve writing a helper iterator function that
 captures the iteration logic. Then, use the helper function to concisely
 implement the main logic.
 
+
 ### Warmup: Linked List
 
 Find the maximum number in a linked list. Assume the 61A definition of linked
@@ -257,6 +264,7 @@ def maximum_linked_list(lst):
 
 Once you're done with that, find the minimum number. How can you reuse the most
 amount of code possible?
+
 
 ### Nested List
 
@@ -310,6 +318,7 @@ def smallest_difference(seq):
 
 ```
 
+
 ### Merge Sorted Interval Lists
 
 [Question from
@@ -337,6 +346,7 @@ def merge_intervals(first, second):
 
 ```
 
+
 ### Merge $k$ Sorted Lists
 
 There exists a $O(n\log{k})$ solution using a heap, but there is a divide and
@@ -361,6 +371,7 @@ def merge_sorted_lists(*lsts):
 
 
 ```
+
 
 ### Permutations
 
