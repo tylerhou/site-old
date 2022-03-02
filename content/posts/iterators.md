@@ -5,9 +5,9 @@ date: 2021-01-03T09:52:47-08:00
 code: true
 math: true
 draft: false
-unlisted: true
+unlisted: false
 _build:
-  list: false
+  list: true
   render: true
 _dummy_:
 ---
