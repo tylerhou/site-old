@@ -377,14 +377,15 @@ def merge_sorted_lists(*lsts):
 
 Find all permutations of the set of integers from $1$ to $n$.
 
-*Hint: `yield from`, and create a second generator to help with your logic.*
+*Hint: Create a second generator to help with your logic, and solve a more
+general problem.*
 
 ```python
 def permutations(n):
     """Finds all permutations of the numbers 1, ..., n in ascending order.
 
     >>> list(permutations(3))
-    [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
+    [(1, 2, 3), (1, 3, 2), (2, 1, 3), (2, 3, 1), (3, 1, 2), (3, 2, 1)]
     """
     # YOUR CODE HERE
 
