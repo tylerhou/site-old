@@ -1,7 +1,7 @@
 ---
 title: Iterators and generators in Python
 subtitle:
-date: 2022-03-01
+date: 2022-03-02
 code: true
 math: true
 draft: false
@@ -78,6 +78,9 @@ Defining an iterator for a data structure also lets you pass that data
 structure into other functions that only rely on the "sequence" interface of
 iterators.
 
+If this is too abstract, we'll see concrete examples below and in the practice
+problems.
+
 ## Generators
 
 Generators are, roughly, objects (created from generator functions) that
@@ -128,7 +131,7 @@ def filter_l(input, predicate):
             result.append(item)
     return result
 
-# ise a generator!
+# use a generator!
 def filter_g(input, predicate):
     for item in input:
         if predicate(item):
@@ -317,6 +320,8 @@ overlaps. Output the merged list. For example,
 - The intervals `[1, 7]` and `[2, 10]` can be merged into `[1, 10]`.
 - The intervals `[1, 5]` and `[5, 10]` can be merged into `[1, 10]`.
 - The intervals `[1, 5]` and `[6, 10]` cannot be merged.
+
+*Hint: `yield from`, and create a second generator to help with your logic.*
 
 ```python
 def merge_intervals(first, second):
