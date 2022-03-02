@@ -364,7 +364,7 @@ def merge_sorted_lists(*lsts):
 
     >>> first = [1, 3, 4, 5, 5, 6, 10]
     >>> second = [-1, 0, 1, 1, 2, 4, 5, 9]
-    >>> merge_sorted_lists(first, second)
+    >>> list(merge_sorted_lists(first, second))
     [-1, 0, 1, 1, 1, 2, 3, 4, 4, 5, 5, 5, 6, 9, 10]
     """
     # YOUR CODE HERE
