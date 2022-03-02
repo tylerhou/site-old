@@ -1,7 +1,7 @@
 ---
-title: Iterators and generators
+title: Iterators and generators in Python
 subtitle:
-date: 2021-01-03T09:52:47-08:00
+date: 2022-03-01
 code: true
 math: true
 draft: false
@@ -54,7 +54,7 @@ Many algorithms need only linearly scan through a sequence once, so using an
 iterator interface makes it easy to write code *generic* over the underlying
 data structure.
 
-In Python, because iterators are so ingrained into the `for` loop, it is
+In Python, because the `for` statement was designed to use iterators, it is
 natural to write such code.
 
 ```python
@@ -74,19 +74,15 @@ def sum(it):
     return total
 ```
 
-In other languages with iterators, one has to make a more conscious effort to
-use them.
-
 Defining an iterator for a data structure also lets you pass that data
 structure into other functions that only rely on the "sequence" interface of
 iterators.
 
 ## Generators
 
-Generators are, roughly, functions that "yield" one or more values through the
-iterator interface. Generators were unique to Python until the standardization
-of coroutines in C++20. Generators are objects that implement the iterator
-interface; that is, you can call `next` on them.
+Generators are, roughly, objects (created from generator functions) that
+"yield" one or more values through the iterator interface. Since they implement
+the iterator interface, you can call `next` on them.
 
 
 ```python
@@ -147,7 +143,7 @@ The downside is that the extra communication overhead can be worse for
 performance overall. (But it's important to measure your code's performance
 before you optimize!)
 
-#### Iterators for data structures
+#### Data Structures
 
 In a similar vein, generators can be used to implement iterators for custom
 data structures.
@@ -165,6 +161,38 @@ def inorder_travseral(tree):
     yield from inorder_traversal(tree.left)
     yield tree.value
     yield from inorder_traversal(tree.right)
+```
+
+
+#### Iterable vs. Iterator
+
+Python also has an "iterable" interface. Iterables are generally objects that
+can be iterated over, like lists, sets, dictionaries, and even the `range`
+object. Iterables implement the `__iter__` method (which constructs a new
+iterator from the iterable).
+
+Iterables are not to be confused with iterators! Iterables are not necessary
+iterators, and iterators are not necessarily iterables.
+
+Also, Python will error if you call `next` on a non-iterator even if it is an
+iterable, so be careful if you receive an sequence and you want to treat it
+like an iterator! It might be just an iterable, so always convert it to an
+iterator first using `iter`. (If it's already an iterator, `iter` will return
+it as is.)
+
+
+```python
+# These all error!
+next([1, 2, 3])
+next(set([1, 2, 3]))
+next(range(3))
+
+# These don't.
+next(iter([1, 2, 3]))       # 1
+next(iter(set([1, 2, 3])))  # 1
+it = iter(range(3))
+next(it)                    # 0
+next(iter(it))              # 1
 ```
 
 #### Laziness
@@ -238,8 +266,8 @@ nested) lists or non-list elements.
 def flatten(lst):
     """Flattens a nested list.
 
-    >>> flatten([[1, 2, 3], None, ["a", [4, [5]]]])
-    [1, 2, 3, None, "a", 4, 5]
+    >>> flatten([[1, 2, 3], None, ['a', [4, [5]]]])
+    [1, 2, 3, None, 'a', 4, 5]
     """
     # YOUR CODE HERE
 
@@ -254,8 +282,8 @@ Find the largest difference between two consecutive numbers in a list.
 *Hint: Generators can yield tuples.*
 
 ```python
-def largest_difference(lst):
-    """Finds the largest difference between two consecutive numbers in lst.
+def largest_difference(seq):
+    """Finds the largest difference between two consecutive numbers in seq.
 
     >>> largest_difference([1, 3, 2, 8, 2, 1, 5])
     6
@@ -268,8 +296,8 @@ def largest_difference(lst):
 Now find the smallest difference.
 
 ```python
-def smallest_difference(lst):
-    """Finds the smallest difference between two consecutive numbers in lst.
+def smallest_difference(seq):
+    """Finds the smallest difference between two consecutive numbers in seq.
 
     >>> smallest_difference([1, 3, 2, 8, 2, 1, 5])
     1
@@ -291,13 +319,13 @@ overlaps. Output the merged list. For example,
 - The intervals `[1, 5]` and `[6, 10]` cannot be merged.
 
 ```python
-def merge_interval_lists(first, second):
-    """Merges two sorted interval lists.
+def merge_intervals(first, second):
+    """Merges the intervals in two sorted lists of intervals.
 
-    >>> first = [1, 5], [10, 14], [16, 18]
-    >>> second = [2, 6], [8, 10], [11, 20]
-    >>> merge_lists(first, second)
-    [[1, 6], [8, 20]]
+    >>> first = [(1, 2), (3, 9)]
+    >>> second = [(4, 6), (8, 10), (11, 12)]
+    >>> merge_intervals(first, second)
+    [(1, 2), (3, 10), (11, 12)]
     """
     # YOUR CODE HERE
 
