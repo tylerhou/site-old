@@ -311,6 +311,8 @@ early.
 
 ```python {linenos=table,linenostart=2}
     left, right = 0, len(array) - 1
+    if not array:
+        return ?
     if not is_green(array[left]):
         return ?
     if is_green(array[right]):
@@ -342,6 +344,9 @@ first red element would be there:
 | -2  | -1  | 0      | 0       | 1   | 3   | 4   | 4   | <span style="white-space: nowrap;">one past end</span> |
 | G   | G   | G      | G       | G   | G   | G   | G   | R   |
 
+What if the array was empty? The same logic would apply: return one past the
+end, which is the 0th element.
+
 </div>
 
 So the final code would look like:
@@ -349,6 +354,8 @@ So the final code would look like:
 ```python {linenos=table,linenostart=2}
 def binary_search(array, is_green):
     left, right = 0, len(array) - 1
+    if not array:
+        return 0
     if not is_green(array[left]):
         return 0
     if is_green(array[right]):
@@ -423,7 +430,7 @@ array.insert(index, 6)
 CHECK_IS_SORTED(array)  # always still true
 ```
 
-This is a feature, not a bug—in many cases we only need to insert into a sorted
+This is a feature--—in many cases we only need to insert into a sorted
 array, so we don't need to check if the returned index has a certain element.
 This is also the behavior of [`bisect_left` in Python's bisect
 library.](https://docs.python.org/3/library/bisect.html#bisect.bisect_left)
