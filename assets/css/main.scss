@@ -167,6 +167,11 @@ code {
   font-weight: 400;
 }
 
+em + code {
+    // TODO(tylerhou): Make this not apply when text nodes are between.
+    margin-inline-start: 0.25em;
+}
+
 .highlight code {
   margin-inline-start: 0;
   margin-inline-end: 0;
@@ -280,12 +285,22 @@ ol ol ol {
   margin: 0 2px;
 }
 
+.next-container {
+    display: flex;
+    justify-content: flex-end;
+
+    .next {
+        font-style: italic;
+    }
+}
+
 // BINARY SEARCH CUSTOM CSS
 .array table {
   border-collapse: collapse;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2em;
+  margin-top: 1.5em;
 
   td {
     padding: 0.4em;
