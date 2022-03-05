@@ -87,17 +87,16 @@ problems.
 
 Python also has an "iterable" interface. Iterables are generally objects that
 can be iterated over, like lists, sets, dictionaries, and even the `range`
-object. Iterables implement the `__iter__` method (which constructs a new
+object. They implement the `__iter__` method (which constructs a new
 iterator from the iterable).
 
 Iterables are not to be confused with iterators! Iterables are not necessary
-iterators, and iterators are not necessarily iterables.
+iterators, and vice versa. Python will error if you call `next` on an object
+that isn't an iterator, even if it is an iterable.
 
-Also, Python will error if you call `next` on a non-iterator even if it is an
-iterable, so be careful if you receive an sequence and you want to treat it
-like an iterator! It might be just an iterable, so always convert it to an
-iterator first using `iter`. (If it's already an iterator, `iter` will return
-it as is.)
+So be careful if you receive an sequence and you want to treat it like an
+iterator! It might be just an iterable, so always convert it first using
+`iter()`. (If it's already an iterator, `iter` will return it as is.)
 
 
 ```python
@@ -174,16 +173,16 @@ def filter_g(input, predicate):
             yield item
 ```
 
-The major advantage to yielding values one by one is because the computation
-is *lazy*. For example, it's possible the code calling `filter` might not
-need to filter out all values as it might not consume the whole sequence.
+One major advantage to yielding values one by one is because the computation is
+*lazy*. For example, it's possible the code calling `filter` might not need to
+filter out all values as it might not consume the whole sequence.
 
-The downside is that the extra communication overhead can be worse for
-performance overall. (But it's important to measure your code's performance
-before you optimize!)
+The downside is that the extra communication overhead---resuming the generator,
+and getting the result---can be worse for performance overall. (But it's
+important to measure your code's performance before you optimize!)
 
 
-#### Data Structures
+#### Iterators for data structures
 
 In a similar vein, generators can be used to implement iterators for custom
 data structures.
@@ -204,7 +203,7 @@ def inorder_travseral(tree):
 ```
 
 
-#### Laziness
+#### Infinite streams
 
 Because generators are lazy, they can also represent infinite streams of
 values. A canonical example is a lazy infinite sequence of primes:
@@ -324,7 +323,7 @@ def smallest_difference(seq):
 [Question from
 Facebook.](https://leetcode.com/discuss/interview-question/124616/Merge-two-interval-lists)
 Given two sorted interval lists, merge the intervals such that there are no
-overlaps. Output the merged list. For example,
+overlaps. Output the combined list, after merging all intervals. For example,
 
 - The intervals `[1, 7]` and `[2, 10]` can be merged into `[1, 10]`.
 - The intervals `[1, 5]` and `[5, 10]` can be merged into `[1, 10]`.
@@ -351,8 +350,8 @@ def merge_intervals(first, second):
 
 There exists a $O(n\log{k})$ solution using a heap, but there is a divide and
 conquer solution with the same time complexity. You can use iterators and
-generators to implement the divide and conquer solution as well. It's a bit
-messy, but it's good practice.
+generators to implement the divide and conquer solution. It's a bit messy, but
+it's good practice.
 
 ```python
 def merge_sorted_lists(*lsts):
