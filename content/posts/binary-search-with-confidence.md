@@ -349,7 +349,7 @@ end, which is the 0th element.
 
 </div>
 
-So the final code would look like:
+Here's the final code:
 
 ```python {linenos=table,linenostart=2}
 def binary_search(array, is_green):
