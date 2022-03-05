@@ -101,8 +101,8 @@ following sorted array:
 </div>
 
 Let's consider the same array, except we label each element with a color---red
-or green. Green elements are those less than 6, and red elements are those
-greater than or equal to 6.
+or green. Color elements with value strictly less than 6 green, and elements
+with value greater than or equal to 6 red.
 
 <div class="array">
 
@@ -113,9 +113,9 @@ greater than or equal to 6.
 
 </div>
 
-Since this array is sorted, it has a clear structure: a contiguous region of
-green elements, followed by a contiguous region of red elements. (Convince
-yourself that all sorted arrays have a similar structure.)
+Since this array is sorted, the color produces a clear structure: a contiguous
+region of green elements, followed by a contiguous region of red elements.
+(Convince yourself that all sorted arrays have a similar structure.)
 
 Notice that 6 is the first red element. The previous element, 3, is a green
 element.
@@ -240,16 +240,16 @@ tells us whether an element is green or not. (If it's not green, it must be
 red.)
 
 ```python {linenos=table}
-is_green(0)  # False, because array[0] == 0  and 0 < 6
-is_green(2)  # False, because array[2] == 3  and 3 < 6
-is_green(3)  # True,  because array[3] == 6  and 6 >= 6
-is_green(7)  # True,  because array[7] == 58 and 58 >= 6
+is_green(0)  # True, because array[0] == 0  and 0 < 6
+is_green(2)  # True, because array[2] == 3  and 3 < 6
+is_green(3)  # False,  because array[3] == 6  and 6 >= 6
+is_green(7)  # False,  because array[7] == 58 and 58 >= 6
 ```
 
 Here is the function. Think about what the main loop is doing: during every
 iteration, we check whether the middle element is green or not. If it's green,
 we move the left pointer; if it's not green, it's red, so we move the right
-pointer. This preserves both invariants.
+pointer.
 
 ```python {linenos=table,linenostart=1}
 def binary_search(array, is_green):
@@ -263,6 +263,9 @@ def binary_search(array, is_green):
             right = middle
 
     return right
+
+# Call as such:
+binary_search(array, lambda i: array[i] < 6);
 ```
 
 Recall our two invariants:
@@ -270,9 +273,9 @@ Recall our two invariants:
 1. The left pointer should always point to a green element.
 1. The right pointer should always point to a red element.
 
-It's clear that the above loop body preserves those invariants. Then, admire
-how the loop body writes itself. There is no equality check, no `+1`/`-1`
-arithmetic: just move the correct-color pointer.
+It should be clear that the above loop body preserves those invariants;
+convince yourself. Then, admire how the loop body writes itself. There is no
+equality check, no `+1`/`-1` arithmetic: just move the correct-color pointer.
 
 The `while` condition states that this loop only terminates when `left` is
 adjacent to `right`. Combined with our invariants, that means if the loop
@@ -285,10 +288,10 @@ gap between the two must continually shrink.[^1] We leave this as an exercise to
 the reader.[^2]
 
 [^1]: To formally prove this, you would have again have to use a inductive
-argument. What is the base case? What is the inductive case?
+  argument. What is the base case? What is the inductive case?
 
-[^2]: (Hint: when `middle` is computed, `right` must be at least two larger
-  than `left`.)
+[^2]: Hint: when `middle` is computed, `right` must be at least two larger
+  than `left`.
 
 Finally, when we exit the loop, we return the index of the first red element,
 which we know `right` stores.
@@ -327,7 +330,7 @@ early.
 ```
 
 What values should we return? If the array is all red, it's clear: the first
-red element would be at `left`, so we can directly return `left`.
+red element would be at 0, so we can directly return 0.
 
 <div class="array">
 
@@ -375,6 +378,9 @@ def binary_search(array, is_green):
             right = middle
 
     return right
+
+# Call as such:
+binary_search(array, lambda i: array[i] < 6);
 ```
 
 ### What happens if the element we're looking for isn't in the array?
@@ -427,23 +433,25 @@ actually find the index of 6—it finds the leftmost index at which you could
 insert 6 to keep the array sorted. That is, we could run the pseudocode:
 
 ```python
-CHECK_IS_SORTED(array)  # true
+# True.
+assert is_sorted(array)
 
-index = left_find_in_sorted_array(array, 6)
+index = binary_search(array, lambda i: array[i] < 6)
 array.insert(index, 6)
 
-CHECK_IS_SORTED(array)  # always still true
+# Always still True.
+assert is_sorted(array)
 ```
 
-This is a feature--—in many cases we only need to insert into a sorted
-array, so we don't need to check if the returned index has a certain element.
-This is also the behavior of [`bisect_left` in Python's bisect
-library.](https://docs.python.org/3/library/bisect.html#bisect.bisect_left)
+This is a feature--—in many cases we only need to insert into a sorted array,
+so we don't need to check if the returned index has a certain element.
+Returning the insertion index is also how [`bisect_left` in Python's bisect
+library](https://docs.python.org/3/library/bisect.html#bisect.bisect_left)
+behaves.
 
-This is also why we return one past the end if the array is entirely green:
-since the entire array is less than the desired element, to maintain sorted
-order we would want to insert the element at the end. That would be the same as
-inserting at `len(array)`.
+This also motivates returning one past the end if the array is entirely green
+or when the array is empty. In both cases, the correct place to insert the new
+element is at the end of the array.
 
 <div class="next-container">
 <div class="next">
