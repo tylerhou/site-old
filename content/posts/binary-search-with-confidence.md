@@ -1,10 +1,15 @@
 ---
 title: Binary search with confidence
+subtitle: Updated March 2022.
 date: 2019-10-21T04:26:10-07:00
 code: true
 math: true
 draft: false
 unlisted: false
+_build:
+  list: true
+  render: true
+_dummy_:
 ---
 
 I've never intuitively understood binary search—at least, I've never understood
