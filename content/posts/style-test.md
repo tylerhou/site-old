@@ -8,6 +8,7 @@ draft: true
 unlisted: true
 _build:
   list: false
+  render: true
 ---
 
 ```javascript {linenos=table,linenostart=10}
@@ -47,7 +48,16 @@ function binary_search(A, n, T):
 0123456789 0123456789 0123456789 0123456789 0123456789
 ```
 
-```javascript
+&nbsp;
+
+```javascript {linenos=table,linenostart=5}
+0123456789 0123456789 0123456789 0123456789 0123456789
+0123456789 0123456789 0123456789 0123456789 0123456789
+```
+
+&nbsp;
+
+```javascript {linenos=false}
 0123456789 0123456789 0123456789 0123456789 0123456789
 0123456789 0123456789 0123456789 0123456789 0123456789
 ```

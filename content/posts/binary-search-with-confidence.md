@@ -265,7 +265,7 @@ def binary_search(array, is_green):
     return right
 
 # Call as such:
-binary_search(array, lambda i: array[i] < 6);
+binary_search(array, lambda x: x < 6);
 ```
 
 Recall our two invariants:
@@ -302,20 +302,21 @@ Are we done? Not so fast!
 
 In the previous section we showed that the loop body *maintains* the invariant.
 In other words, we proved the inductive step: that *if* `left` (`right`)
-pointed to a green element at the beginning of a loop iteration, it would
+pointed to a green (red) element at the beginning of a loop iteration, it would
 continue to point to a green (red) element at the end.
 
 But that's a big *if*, since we never established that the invariant was true
 in the first place! If the entire array was green, for instance, we would only
-<span>move</span> `left`. Then `right` would point to a green element after the loop ended.
+<span>move</span> `left`. Then `right` would point to a green element after the
+loop ended.
 
 Stepping back, to prove that our loop is correct, we must prove that the
-invariant holds. To do that, we **must** prove the base case. Otherwise, our
+invariant holds. To do that, we **must** "prove" the base case. Otherwise, our
 argument is incomplete.
 
-To "prove" the base case, we can check that `left` points to green and `right`
-points to red before entering the loop. If either isn't true, we can return
-early.
+To prove the base case, we must ensure that before we enter the loop, the
+invariants are indeed satisfied. So we check that `left` points to green and
+`right` points to red. If either isn't true, we can return early.
 
 ```python {linenos=table,linenostart=2}
     left, right = 0, len(array) - 1
@@ -359,7 +360,7 @@ end, which is the 0th element.
 
 Here's the final code:
 
-```python {linenos=table,linenostart=2}
+```python {linenos=table,linenostart=1}
 def binary_search(array, is_green):
     left, right = 0, len(array) - 1
     if not array:
@@ -380,7 +381,7 @@ def binary_search(array, is_green):
     return right
 
 # Call as such:
-binary_search(array, lambda i: array[i] < 6);
+binary_search(array, lambda x: x < 6);
 ```
 
 ### What happens if the element we're looking for isn't in the array?
@@ -456,7 +457,7 @@ element is at the end of the array.
 <div class="next-container">
 <div class="next">
 
-[☛ Binary search, revisited.](/posts/binary-search-revisited)
+[Binary search, revisited](/posts/binary-search-revisited)
 
 </div>
 </div>

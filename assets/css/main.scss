@@ -194,6 +194,11 @@ em + code {
 .highlight > .chroma {
   padding: 0.4em 0.2em;
   overflow-x: auto; // Color should overflow.
+  padding-left: calc(0.2em + 26px);
+
+  > table.lntable {
+      margin-left: -26px;
+  }
 }
 
 // Fix one-line codeblock on Firefox.
@@ -291,6 +296,26 @@ ol ol ol {
 
     .next {
         font-style: italic;
+
+        a::after {
+            content: ". ☛";
+        }
+    }
+}
+
+.prev-container {
+    display: flex;
+    justify-content: flex-start;
+
+    .prev {
+        font-style: italic;
+
+        a::before {
+            content: "☚ ";
+        }
+        a::after {
+            content: ".";
+        }
     }
 }
 
