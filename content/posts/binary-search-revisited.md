@@ -242,12 +242,12 @@ problem $B$ one or more times.[^1]
 [^1]: Not a precise definition, but the details aren't important here.
 
 We saw that above with the chocolates problem: in order to solve the chocolate
-optimization problem $A$ ("maximize the number of almonds we receive"), we
+optimization problem $A$ ("maximize the number of almonds I receive"), we
 instead reduced it to $B$, the decision problem ("can I give myself at least
 $k$ almonds?") using $\mathcal{O}(\log{n})$ calls to $B$.
 
 Binary search helped us accomplish the reduction with as few calls to $B$
-possible. In general binary search can help us quickly solve many optimization
+possible. In general, binary search can help us quickly solve many optimization
 problems that have decision variants with a similar structure.
 
 For example, a famous problem in complexity theory is the travelling salesman
