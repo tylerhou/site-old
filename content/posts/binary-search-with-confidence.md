@@ -31,9 +31,12 @@ function binary_search(A, n, T):
   return unsuccessful
 ```
 
-I can't understand why this code is correct without spending at least a few
-minutes thinking through all the edge cases: arrays of size 0, 1, 2, 3, arrays
-without the desired element, etc.
+I can't understand why this code is correct without spending many minutes
+considering:
+
+1. Why do we have to add/subtract 1 in the loop?
+1. What happens on small arrays?
+1. What happens if the element isn't in the array?
 
 There's another way to write binary search that not only do I find easier to
 understand and prove correct, but also is more flexible.
@@ -41,6 +44,11 @@ understand and prove correct, but also is more flexible.
 ## An outline
 
 ### Loop invariants
+
+
+Before we dive into the binary search algorithm, I want to go over *loop
+invariants*---background that will help us later when we try to prove the
+algorithm's correctness.
 
 Informally, loop invariants are properties of a loop that remain unchanged as
 the loop executes. For example, consider the following loop:

@@ -83,7 +83,7 @@ Why make this change?
 [claim](https://www.programiz.com/dsa/binary-search#:~:text=Binary%20Search%20is%20a%20searching%20algorithm%20for%20finding%20an%20element%27s%20position%20in%20a%20sorted%20array.)
 that binary search is an algorithm for finding the position of a target value
 in an array. But now our new `binary_search` function doesn't even take an
-array to begin with. Why differ from convention?
+array anymore. Why differ from convention?
 
 ### A generalization
 
@@ -120,17 +120,17 @@ We can make a similar argument that all red elements must be followed by more
 red elements, and no green elements. Thus, we have a region of green, followed
 by a region of red.
 
-Finally, we know that $0$ is green ($2^0 = 1 \lt 1{,}000{,}000$), and let's
-guess $100$ is red. So we can call binary search
+Finally, we know that 0 is green ($2^0 = 1 \lt 1{,}000{,}000$), and let's guess
+100 is red. So we can call binary search
 ([Godbolt](https://godbolt.org/z/5r1vrKnjn)):
 
 ```python {linenos=false}
 binary_search(0, 100, is_exp_green)  # 20
 ```
 
-And it works! There is no array of values we're looking through. Here, binary
-search helps us search for the first false value of `is_exp_green`. That
-function definition, plus upper and lower bounds, are all we need.
+And it works! Here, binary search helps us search for the first false value of
+`is_exp_green`. That function definition, plus upper and lower bounds, are all
+we need. There is no array of values we're looking through.
 
 It's also important to note that `is_exp_green` (which computes the power of 2)
 is only executed $\mathcal{O}(\log{n})$ times. So this variant of binary search
@@ -145,14 +145,38 @@ dividing it into squares. Each square has a certain number of almonds.
 
 You have $n-1$ friends, who all love almonds, so they will take the partitions
 with the most number of almonds. That leaves you with the partition with the
-least.
-
-How can you divide the chocolate bar into $n$ partitions to maximize the number
-of almonds you get? (You aren't allowed to reorder squares: you must break the
-chocolate at $n-1$ points.)
+least. How can you divide the chocolate bar into $n$ partitions to maximize the
+number of almonds you get? (You aren't allowed to reorder squares: you must
+break the chocolate at $n-1$ points.)
 
 
 ---
 
-I won't present the solution, but here is the main idea: we want to find
-the largest value of $k$ such that we can give
+
+I won't explain the solution in detail, but I will present the main idea.
+Another way to state the problem is: find the largest value of $k$ such that we
+can give all friends at least $k$ almonds.
+
+Notice that this problem now has the same structure as above: if it's possible
+to give everyone $k$ almonds, then must be possible to give everyone $k-1$
+almonds. And if it's not possible to give everyone $k$ almonds, then it's also
+not possible to give everyone $k+1$ almonds.
+
+So, we have a region where it *is* possible to give everyone $k$ almonds,
+followed by a region where it is not. We can find the boundary between the two
+regions via binary search.
+
+Our `is_green` function would then be a procedure that would decide whether it
+is possible to give everyone at least $k$ almonds. Then we can use our binary
+search implementation above to find the minimum impossible $k$ value.  That
+value minus one would be the maximum possible $k$ value.
+
+### Decision problems and complexity theory
+
+I am (obviously) not the first person to have noticed this generalization of
+binary search. This perspective is common in
+[competitive](https://usaco.guide/silver/binary-search?lang=cpp)
+[programming.](https://www.topcoder.com/thrive/articles/Binary%20Search)
+
+Another place where this variant of binary search appears is in complexity
+theory.
