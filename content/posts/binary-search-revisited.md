@@ -155,7 +155,7 @@ break the chocolate at $n-1$ points.)
 
 I won't explain the solution in detail, but I will present the main idea.
 Another way to state the problem is: find the largest value of $k$ such that we
-can give all friends at least $k$ almonds.
+can give all friends at least $k$ almonds by partitioning the chocolate bar.
 
 Notice that this problem now has the same structure as above: if it's possible
 to give everyone $k$ almonds, then must be possible to give everyone $k-1$
@@ -168,15 +168,48 @@ regions via binary search.
 
 Our `is_green` function would then be a procedure that would decide whether it
 is possible to give everyone at least $k$ almonds. Then we can use our binary
-search implementation above to find the minimum impossible $k$ value.  That
-value minus one would be the maximum possible $k$ value.
+search implementation above to find the minimum impossible $k$ value. Then
+the preceding value would be the maximum possible $k$ value.
 
 ### Decision problems and complexity theory
 
 I am (obviously) not the first person to have noticed this generalization of
-binary search. This perspective is common in
+binary search. There are a few
 [competitive](https://usaco.guide/silver/binary-search?lang=cpp)
-[programming.](https://www.topcoder.com/thrive/articles/Binary%20Search)
+[programming](https://www.topcoder.com/thrive/articles/Binary%20Search)
+articles that teach binary search from a similar perpsective.
 
-Another place where this variant of binary search appears is in complexity
-theory.
+Another place where this variant of binary search appears is when "reducing"
+optimization problems to their decision variants. Very informally, reducing a
+problem $A$ to another problem $B$ means that you solve problem $A$ by calling
+problem $B$ one or more times.[^1]
+
+[^1]: Not a precise definition, but the details aren't important here.
+
+We saw that above with the chocolates problem: in order to solve the chocolate
+optimization problem $A$ ("maximize the number of almonds we receive"), we
+instead reduced it to $B$, the decision problem ("can I give myself at least
+$k$ almonds?") using $\mathcal{O}(\log{n})$ calls to $B$.
+
+Binary search helped us accomplish the reduction with as few calls to $B$
+possible. In general binary search can help us quickly solve many optimization
+problems that have decision variants with a similar structure.
+
+For example, a famous problem in complexity theory is the travelling salesman
+problem (TSP). The usual statement of TSP is: given some cities and roads (each
+with travel cost) connecting cities, is it possible to visit every city exactly
+once and return to the original city in under cost $C$?
+
+Notice that this is a decision problem: the answer is either true or false. And
+it also has the same structure that we can use for binary search: if it's
+possible to make such a trip in cost $C$, it must be possible with cost $C-1$,
+and if it's impossible in cost $C$, it must also be impossible with cost $C+1$.
+
+Thus, consider an optimization variant of TSP: given a list of cities and
+roads, what is the cost of the shortest path that visits every city exactly
+once and returns to the original city? We can solve this with
+$\mathcal{O}(\log{n})$ calls to TSP-Decision: pick some lower bound on the
+cost and some upper bound and use binary search.
+
+Again, no longer are we finding an element in an array, but we are finding the
+boundary between falses (greens) and trues (reds) for TSP-Decision.

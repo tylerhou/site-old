@@ -12,9 +12,9 @@ _build:
 _dummy_:
 ---
 
-I've never intuitively understood binary search—at least, I've never understood
-its usual presentation. For example, take a quick glance at Wikipedia's binary
-search code:
+I've never intuitively understood binary search—--at least, I've never
+understood its usual presentation. For example, take a quick glance at
+Wikipedia's binary search code:
 
 ```javascript {linenos=table}
 function binary_search(A, n, T):
@@ -63,32 +63,39 @@ int f() {
 }
 ```
 
-One invariant that remains true during the loop is that `num` is even. Let's
-call this statement---that `num` is even---"$A$". Here's the argument:
+One invariant that remains true during the loop is that `num` is even
+(*Statement $A$*). Here's the argument:
 
-1. Since `num` starts off even, it remains even as the loop executes.
-1. If `num` is even at the beginning of a loop iteration, the loop will add two
+1. *Statement 1:* <span></span>`num` starts off even (as 0 is even).
+1. *Statement 2:* <span></span>If `num` is even at the beginning of a loop iteration, the loop will add two
    to it; hence `num` will be even at the end of that loop iteration.
+
+From these two statements, we can deduce that `num` must be even after the
+$n$th loop iteration for any arbitrarily large $n$: simply start from Statement
+1, and repeatedly apply Statement 2 $n$ times:
+
+1. (After $0$ loop iterations,) `num` is even. <span style="float: right">(Statement 1)</span>
+1. After $1$ loop iteration, `num` is even. <span style="float: right">(Apply Statement 2)</span>
+1. After $2$ loop iterations, `num` is even. <span style="float: right">(Apply Statement 2)</span>
+1. After $3$ loop iterations, `num` is even. <span style="float: right">(Apply Statement 2)</span>
+1. ...
+1. After $n$ loop iterations, `num` is even. <span style="float: right">(Apply Statement 2)</span>
+1. *Ad infinitum...*
+
+The two combined complete our argument, and thus prove $A$ holds over all loop
+interations. In other words, $A$ is *invariant.*
 
 The above argument is an argument by [*mathematical
 induction.*](https://en.wikipedia.org/wiki/Mathematical_induction). To make an
 argument by mathematical induction, one has to prove two things: the *base
-case* and the *inductive step*.
+case* and the *inductive step*. To prove that Statement $A$ was invariant,
+Statement $1$ was the base case, and Statement $2$ was the inductive case.
 
-
-The first statement above---that $A$ was initially true---is the base case.
-The second statement---that if $A$ was true, then $A$ will still be true after
-one more iteration---is the inductive step.
-
-The two combined complete our argument by induction, and thus prove that our
-invariant holds over all loop iterations. Statment (1) says `num` starts off as
-even, and statement (2) says `num` stays even if it was already even; thus
-`num` will always be even.
-
-It's important that we prove both statements true. If `num` was initially odd,
-then our base case would be different. And that would change our invariant:
-`num` would always be odd, not even, as a odd number would stay odd every
-iteration.
+To make a correct argument by induction, you must prove both the base case and
+the inductive case. Otherwise, the argument is not valid. For exmaple, if `num`
+was initially odd, then our base case would be different, and that would change
+our invariant: `num` would always be odd, not even, as a odd number would stay
+odd every iteration.
 
 Similarly, if we had added a different constant to `num` every loop iteration,
 then the [parity](https://en.wikipedia.org/wiki/Parity_(mathematics)) of
@@ -165,8 +172,8 @@ Let's consider the middle element:
 
 </div>
 
-We have to choose which pointer---either `left` or `right`---to move to
-`middle`. How might we choose?
+We have to choose a pointer---either `left` or `right`---to move to `middle`.
+Which poitner should we choose?
 
 Well, based on our loop invariant, it's clear: since the `middle` element is a
 red element, we want to move `right` to `middle`. That would maintain the
@@ -241,8 +248,6 @@ can return its index, 3.
 
 ## The code
 
-Let's walk through the code that implements the above algorithm line by line:
-
 Our binary search function will take an array and a function `is_green`, which
 tells us whether an element is green or not. (If it's not green, it must be
 red.)
@@ -276,12 +281,12 @@ def binary_search(array, is_green):
 binary_search(array, lambda x: x < 6);
 ```
 
-Recall our two invariants:
+Recall our two desired invariants:
 
-1. The left pointer should always point to a green element.
-1. The right pointer should always point to a red element.
+1. The left pointer points to a green element.
+1. The right pointer points to a red element.
 
-It should be clear that the above loop body preserves those invariants;
+It should be clear that the above loop body would preserve those invariants;
 convince yourself. Then, admire how the loop body writes itself. There is no
 equality check, no `+1`/`-1` arithmetic: just move the correct-color pointer.
 
@@ -319,12 +324,13 @@ in the first place! If the entire array was green, for instance, we would only
 loop ended.
 
 Stepping back, to prove that our loop is correct, we must prove that the
-invariant holds. To do that, we **must** "prove" the base case. Otherwise, our
-argument is incomplete.
+invariant holds. We've already proved the *inductive case* above. But to
+complete our argument, we **must** also "prove" the base case.
 
-To prove the base case, we must ensure that before we enter the loop, the
-invariants are indeed satisfied. So we check that `left` points to green and
-`right` points to red. If either isn't true, we can return early.
+To prove the base case, we must ensure that before we enter the loop the
+statements that we want to be invariant are indeed true. So we check that
+`left` points to green and `right` points to red. If either isn't true, we can
+return early.
 
 ```python {linenos=table,linenostart=2}
     left, right = 0, len(array) - 1
@@ -338,8 +344,9 @@ invariants are indeed satisfied. So we check that `left` points to green and
     # Loop...
 ```
 
-What values should we return? If the array is all red, it's clear: the first
-red element would be at 0, so we can directly return 0.
+What values should we return? There are three cases. First, if the array is all
+red, it's clear: the first red element would be at index 0, so we can directly
+return 0.
 
 <div class="array">
 
@@ -350,9 +357,9 @@ red element would be at 0, so we can directly return 0.
 
 </div>
 
-If the array is all green, then it's not as clear. In practice, it's useful
-to return an index one past the end of the array. One could imagine that the
-first red element would be there:
+Second, if the array is all green, then what we should return is not as clear.
+In practice, it's useful to return an index one past the end of the array. One
+could imagine that the first red element would be there:
 
 <div class="array">
 
@@ -361,8 +368,8 @@ first red element would be there:
 | -2  | -1  | 0      | 0       | 1   | 3   | 4   | 4   | <span style="white-space: nowrap;">one past end</span> |
 | G   | G   | G      | G       | G   | G   | G   | G   | R   |
 
-What if the array was empty? The same logic would apply: return one past the
-end, which is the 0th element.
+Last, what if the array was empty? The same logic would apply: return one past
+the end, which is the 0th element.
 
 </div>
 
@@ -392,7 +399,7 @@ def binary_search(array, is_green):
 binary_search(array, lambda x: x < 6);
 ```
 
-### What happens if the element we're looking for isn't in the array?
+### What happens if the target element is missing?
 
 Consider the same array, except with 6 changed to 7. Let's repeat our
 algorithm, searching for 6. I'll omit the middle steps for brevity.
@@ -452,14 +459,17 @@ array.insert(index, 6)
 assert is_sorted(array)
 ```
 
-This is a feature--—in many cases we only need to insert into a sorted array,
-so we don't need to check if the returned index has a certain element.
-Returning the insertion index is also how [`bisect_left` in Python's bisect
-library](https://docs.python.org/3/library/bisect.html#bisect.bisect_left)
-behaves.
+This is a feature--—in some cases we only need to insert into a sorted array,
+so we don't need to check if the returned index has a certain element in the
+binary search procedure. It's better to leave that up to the caller.
 
-This also motivates returning one past the end if the array is entirely green
-or when the array is empty. In both cases, the correct place to insert the new
+Other binary search implementations, including [`bisect_left` in Python's
+bisect
+library,](https://docs.python.org/3/library/bisect.html#bisect.bisect_left)
+also return the first valid insertion point.
+
+This is also why we return one past the end if the array is entirely green or
+when the array is empty. In both cases, the correct place to insert the new
 element is at the end of the array.
 
 <div class="next-container">
