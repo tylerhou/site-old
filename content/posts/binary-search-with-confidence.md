@@ -89,7 +89,7 @@ The above argument is an argument by [*mathematical
 induction.*](https://en.wikipedia.org/wiki/Mathematical_induction). To make an
 argument by mathematical induction, one has to prove two things: the *base
 case* and the *inductive step*. To prove that Statement $A$ was invariant,
-Statement $1$ was the base case, and Statement $2$ was the inductive case.
+Statement 1 was the base case, and Statement 2 was the inductive case.
 
 To make a correct argument by induction, you must prove both the base case and
 the inductive case. Otherwise, the argument is not valid. For exmaple, if `num`
