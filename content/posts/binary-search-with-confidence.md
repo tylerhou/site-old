@@ -121,10 +121,20 @@ with value greater than or equal to 6 red.
 
 <div class="array">
 
-|     |     |     |     |     |     |     |     |     |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 0   | 2   | 3   | 6   | 9   | 10  | 20  | 58  | 60  |
-| G   | G   | G   | R   | R   | R   | R   | R   | R   |
+<table> <thead> <tr> <th></th> <th></th> <th></th> <th></th> <th></th>
+<th></th> <th></th> <th></th> <th></th> </tr> </thead> <tbody> <tr> <td>0</td>
+<td>2</td> <td>3</td> <td>6</td> <td>9</td> <td>10</td> <td>20</td> <td>58</td>
+<td>60</td> </tr> <tr> <td class="bg-light-green">G</td> <td
+class="bg-light-green">G</td> <td class="bg-light-green">G</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> </tr> </tbody>
+</table>
+
+<!-- |     |     |     |     |     |     |     |     |     | -->
+<!-- | --- | --- | --- | --- | --- | --- | --- | --- | --- | -->
+<!-- | 0   | 2   | 3   | 6   | 9   | 10  | 20  | 58  | 60  | -->
+<!-- | G   | G   | G   | R   | R   | R   | R   | R   | R   | -->
 
 </div>
 
@@ -146,11 +156,23 @@ element and `right` points to the last element:
 
 <div class="array">
 
-|        |     |     |     |     |     |     |     |         |
-| ------ | --- | --- | --- | --- | --- | --- | --- | ------- |
-| 0      | 2   | 3   | 6   | 9   | 10  | 20  | 58  | 60      |
-| G      | G   | G   | R   | R   | R   | R   | R   | R       |
-| `left` |     |     |     |     |     |     |     | `right` |
+<table> <thead> <tr> <th></th> <th></th> <th></th> <th></th> <th></th>
+<th></th> <th></th> <th></th> <th></th> </tr> </thead> <tbody> <tr> <td>0</td>
+<td>2</td> <td>3</td> <td>6</td> <td>9</td> <td>10</td> <td>20</td> <td>58</td>
+<td>60</td> </tr> <tr> <td class="bg-light-green">G</td> <td
+class="bg-light-green">G</td> <td class="bg-light-green">G</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> </tr> <tr> <td
+class="dark-green heavy small"><code>left</code></td> <td></td> <td></td>
+<td></td> <td></td> <td></td> <td></td> <td></td> <td class="dark-red heavy
+small"><code>right</code></td> </tr> </tbody> </table>
+
+<!-- |        |     |     |     |     |     |     |     |         | -->
+<!-- | ------ | --- | --- | --- | --- | --- | --- | --- | ------- | -->
+<!-- | 0      | 2   | 3   | 6   | 9   | 10  | 20  | 58  | 60      | -->
+<!-- | G      | G   | G   | R   | R   | R   | R   | R   | R       | -->
+<!-- | `left` |     |     |     |     |     |     |     | `right` | -->
 
 </div>
 
@@ -164,11 +186,23 @@ Let's consider the middle element:
 
 <div class="array">
 
-|        |     |     |     |          |     |     |     |         |
-| ------ | --- | --- | --- | -------- | --- | --- | --- | ------- |
-| 0      | 2   | 3   | 6   | 9        | 10  | 20  | 58  | 60      |
-| G      | G   | G   | R   | R        | R   | R   | R   | R       |
-| `left` |     |     |     | `middle` |     |     |     | `right` |
+<table> <thead> <tr> <th></th> <th></th> <th></th> <th></th> <th></th>
+<th></th> <th></th> <th></th> <th></th> </tr> </thead> <tbody> <tr> <td>0</td>
+<td>2</td> <td>3</td> <td>6</td> <td>9</td> <td>10</td> <td>20</td> <td>58</td>
+<td>60</td> </tr> <tr> <td class="bg-light-green">G</td> <td
+class="bg-light-green">G</td> <td class="bg-light-green">G</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> </tr> <tr> <td
+class="dark-green heavy small"><code>left</code></td> <td></td> <td></td>
+<td></td> <td><code>middle</code></td> <td></td> <td></td> <td></td> <td
+class="dark-red heavy small"><code>right</code></td> </tr> </tbody> </table>
+
+<!-- |        |     |     |     |          |     |     |     |         | -->
+<!-- | ------ | --- | --- | --- | -------- | --- | --- | --- | ------- | -->
+<!-- | 0      | 2   | 3   | 6   | 9        | 10  | 20  | 58  | 60      | -->
+<!-- | G      | G   | G   | R   | R        | R   | R   | R   | R       | -->
+<!-- | `left` |     |     |     | `middle` |     |     |     | `right` | -->
 
 </div>
 
@@ -182,11 +216,23 @@ break an invariant: that `left` always points to green!)
 
 <div class="array">
 
-|        |     |     |     |         |     |     |     |     |
-| ------ | --- | --- | --- | ------- | --- | --- | --- | --- |
-| 0      | 2   | 3   | 6   | 9       | 10  | 20  | 58  | 60  |
-| G      | G   | G   | R   | R       | R   | R   | R   | R   |
-| `left` |     |     |     | `right` |     |     |     |     |
+<table> <thead> <tr> <th></th> <th></th> <th></th> <th></th> <th></th>
+<th></th> <th></th> <th></th> <th></th> </tr> </thead> <tbody> <tr> <td>0</td>
+<td>2</td> <td>3</td> <td>6</td> <td>9</td> <td>10</td> <td>20</td> <td>58</td>
+<td>60</td> </tr> <tr> <td class="bg-light-green">G</td> <td
+class="bg-light-green">G</td> <td class="bg-light-green">G</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> </tr> <tr> <td
+class="dark-green heavy small"><code>left</code></td> <td></td> <td></td>
+<td></td> <td class="dark-red heavy small"><code>right</code></td> <td></td>
+<td></td> <td></td> <td></td> </tr> </tbody> </table>
+
+<!-- |        |     |     |     |         |     |     |     |     | -->
+<!-- | ------ | --- | --- | --- | ------- | --- | --- | --- | --- | -->
+<!-- | 0      | 2   | 3   | 6   | 9       | 10  | 20  | 58  | 60  | -->
+<!-- | G      | G   | G   | R   | R       | R   | R   | R   | R   | -->
+<!-- | `left` |     |     |     | `right` |     |     |     |     | -->
 
 </div>
 
@@ -194,11 +240,24 @@ We pick the new middle element halfway between `left` and `right`:
 
 <div class="array">
 
-|        |     |          |     |         |     |     |     |     |
-| ------ | --- | -------- | --- | ------- | --- | --- | --- | --- |
-| 0      | 2   | 3        | 6   | 9       | 10  | 20  | 58  | 60  |
-| G      | G   | G        | R   | R       | R   | R   | R   | R   |
-| `left` |     | `middle` |     | `right` |     |     |     |     |
+<table> <thead> <tr> <th></th> <th></th> <th></th> <th></th> <th></th>
+<th></th> <th></th> <th></th> <th></th> </tr> </thead> <tbody> <tr> <td>0</td>
+<td>2</td> <td>3</td> <td>6</td> <td>9</td> <td>10</td> <td>20</td> <td>58</td>
+<td>60</td> </tr> <tr> <td class="bg-light-green">G</td> <td
+class="bg-light-green">G</td> <td class="bg-light-green">G</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> </tr> <tr> <td
+class="dark-green heavy small"><code>left</code></td> <td></td>
+<td><code>middle</code></td> <td></td> <td class="dark-red heavy
+small"><code>right</code></td> <td></td> <td></td> <td></td> <td></td> </tr>
+</tbody> </table>
+
+<!-- |        |     |          |     |         |     |     |     |     | -->
+<!-- | ------ | --- | -------- | --- | ------- | --- | --- | --- | --- | -->
+<!-- | 0      | 2   | 3        | 6   | 9       | 10  | 20  | 58  | 60  | -->
+<!-- | G      | G   | G        | R   | R       | R   | R   | R   | R   | -->
+<!-- | `left` |     | `middle` |     | `right` |     |     |     |     | -->
 
 </div>
 
@@ -209,11 +268,23 @@ the same-color pointer.
 
 <div class="array">
 
-|     |     |        |     |         |     |     |     |     |
-| --- | --- | ------ | --- | ------- | --- | --- | --- | --- |
-| 0   | 2   | 3      | 6   | 9       | 10  | 20  | 58  | 60  |
-| G   | G   | G      | R   | R       | R   | R   | R   | R   |
-|     |     | `left` |     | `right` |     |     |     |     |
+<table> <thead> <tr> <th></th> <th></th> <th></th> <th></th> <th></th>
+<th></th> <th></th> <th></th> <th></th> </tr> </thead> <tbody> <tr> <td>0</td>
+<td>2</td> <td>3</td> <td>6</td> <td>9</td> <td>10</td> <td>20</td> <td>58</td>
+<td>60</td> </tr> <tr> <td class="bg-light-green">G</td> <td
+class="bg-light-green">G</td> <td class="bg-light-green">G</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> </tr> <tr>
+<td></td> <td></td> <td class="dark-green heavy small"><code>left</code></td>
+<td></td> <td class="dark-red heavy small"><code>right</code></td> <td></td>
+<td></td> <td></td> <td></td> </tr> </tbody> </table>
+
+<!-- |     |     |        |     |         |     |     |     |     | -->
+<!-- | --- | --- | ------ | --- | ------- | --- | --- | --- | --- | -->
+<!-- | 0   | 2   | 3      | 6   | 9       | 10  | 20  | 58  | 60  | -->
+<!-- | G   | G   | G      | R   | R       | R   | R   | R   | R   | -->
+<!-- |     |     | `left` |     | `right` |     |     |     |     | -->
 
 </div>
 
@@ -222,11 +293,24 @@ next `middle`:
 
 <div class="array">
 
-|     |     |        |          |         |     |     |     |     |
-| --- | --- | ------ | -------- | ------- | --- | --- | --- | --- |
-| 0   | 2   | 3      | 6        | 9       | 10  | 20  | 58  | 60  |
-| G   | G   | G      | R        | R       | R   | R   | R   | R   |
-|     |     | `left` | `middle` | `right` |     |     |     |     |
+<table> <thead> <tr> <th></th> <th></th> <th></th> <th></th> <th></th>
+<th></th> <th></th> <th></th> <th></th> </tr> </thead> <tbody> <tr> <td>0</td>
+<td>2</td> <td>3</td> <td>6</td> <td>9</td> <td>10</td> <td>20</td> <td>58</td>
+<td>60</td> </tr> <tr> <td class="bg-light-green">G</td> <td
+class="bg-light-green">G</td> <td class="bg-light-green">G</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> </tr> <tr>
+<td></td> <td></td> <td class="dark-green heavy small"><code>left</code></td>
+<td><code>middle</code></td> <td class="dark-red heavy
+small"><code>right</code></td> <td></td> <td></td> <td></td> <td></td> </tr>
+</tbody> </table>
+
+<!-- |     |     |        |          |         |     |     |     |     | -->
+<!-- | --- | --- | ------ | -------- | ------- | --- | --- | --- | --- | -->
+<!-- | 0   | 2   | 3      | 6        | 9       | 10  | 20  | 58  | 60  | -->
+<!-- | G   | G   | G      | R        | R       | R   | R   | R   | R   | -->
+<!-- |     |     | `left` | `middle` | `right` |     |     |     |     | -->
 
 </div>
 
@@ -234,11 +318,23 @@ And it's red, so we move `right`:
 
 <div class="array">
 
-|     |     |        |         |     |     |     |     |     |
-| --- | --- | ------ | ------- | --- | --- | --- | --- | --- |
-| 0   | 2   | 3      | 6       | 9   | 10  | 20  | 58  | 60  |
-| G   | G   | G      | R       | R   | R   | R   | R   | R   |
-|     |     | `left` | `right` |     |     |     |     |     |
+<table> <thead> <tr> <th></th> <th></th> <th></th> <th></th> <th></th>
+<th></th> <th></th> <th></th> <th></th> </tr> </thead> <tbody> <tr> <td>0</td>
+<td>2</td> <td>3</td> <td>6</td> <td>9</td> <td>10</td> <td>20</td> <td>58</td>
+<td>60</td> </tr> <tr> <td class="bg-light-green">G</td> <td
+class="bg-light-green">G</td> <td class="bg-light-green">G</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> </tr> <tr>
+<td></td> <td></td> <td class="dark-green heavy small"><code>left</code></td>
+<td class="dark-red heavy small"><code>right</code></td> <td></td> <td></td>
+<td></td> <td></td> <td></td> </tr> </tbody> </table>
+
+<!-- |     |     |        |         |     |     |     |     |     | -->
+<!-- | --- | --- | ------ | ------- | --- | --- | --- | --- | --- | -->
+<!-- | 0   | 2   | 3      | 6       | 9   | 10  | 20  | 58  | 60  | -->
+<!-- | G   | G   | G      | R       | R   | R   | R   | R   | R   | -->
+<!-- |     |     | `left` | `right` |     |     |     |     |     | -->
 
 </div>
 
@@ -350,10 +446,20 @@ return 0.
 
 <div class="array">
 
-|     |     |        |         |     |     |     |     |     |
-| --- | --- | ------ | ------- | --- | --- | --- | --- | --- |
-| 7   | 8   | 8      | 9       | 12  | 13  | 20  | 58  | 60  |
-| R   | R   | R      | R       | R   | R   | R   | R   | R   |
+<table> <thead> <tr> <th></th> <th></th> <th></th> <th></th> <th></th>
+<th></th> <th></th> <th></th> <th></th> </tr> </thead> <tbody> <tr> <td>7</td>
+<td>8</td> <td>8</td> <td>9</td> <td>12</td> <td>13</td> <td>20</td>
+<td>58</td> <td>60</td> </tr> <tr> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> </tr> </tbody>
+</table>
+
+<!-- |     |     |        |         |     |     |     |     |     | -->
+<!-- | --- | --- | ------ | ------- | --- | --- | --- | --- | --- | -->
+<!-- | 7   | 8   | 8      | 9       | 12  | 13  | 20  | 58  | 60  | -->
+<!-- | R   | R   | R      | R       | R   | R   | R   | R   | R   | -->
 
 </div>
 
@@ -363,10 +469,20 @@ could imagine that the first red element would be there:
 
 <div class="array">
 
-|     |     |        |         |     |     |     |     |     |
-| --- | --- | ------ | ------- | --- | --- | --- | --- | --- |
-| -2  | -1  | 0      | 0       | 1   | 3   | 4   | 4   | <span style="white-space: nowrap;">one past end</span> |
-| G   | G   | G      | G       | G   | G   | G   | G   | R   |
+<table> <thead> <tr> <th></th> <th></th> <th></th> <th></th> <th></th>
+<th></th> <th></th> <th></th> <th></th> </tr> </thead> <tbody> <tr> <td>-2</td>
+<td>-1</td> <td>0</td> <td>0</td> <td>1</td> <td>3</td> <td>4</td> <td>4</td>
+<td><span style="white-space: nowrap;">one past end</span></td> </tr> <tr> <td
+class="bg-light-green">G</td> <td class="bg-light-green">G</td> <td
+class="bg-light-green">G</td> <td class="bg-light-green">G</td> <td
+class="bg-light-green">G</td> <td class="bg-light-green">G</td> <td
+class="bg-light-green">G</td> <td class="bg-light-green">G</td> <td
+class="bg-light-red">R</td> </tr> </tbody> </table>
+
+<!-- |     |     |        |         |     |     |     |     |     | -->
+<!-- | --- | --- | ------ | ------- | --- | --- | --- | --- | --- | -->
+<!-- | -2  | -1  | 0      | 0       | 1   | 3   | 4   | 4   | <span style="white-space: nowrap;">one past end</span> | -->
+<!-- | G   | G   | G      | G       | G   | G   | G   | G   | R   | -->
 
 Last, what if the array was empty? The same logic would apply: return one past
 the end, which is the 0th element.
@@ -406,41 +522,89 @@ algorithm, searching for 6. I'll omit the middle steps for brevity.
 
 <div class="array">
 
-|        |     |     |     |     |     |     |     |         |
-| ------ | --- | --- | --- | --- | --- | --- | --- | ------- |
-| 0      | 2   | 3   | 7   | 9   | 10  | 20  | 58  | 60      |
-| G      | G   | G   | R   | R   | R   | R   | R   | R       |
-| `left` |     |     |     |     |     |     |     | `right` |
+<table> <thead> <tr> <th></th> <th></th> <th></th> <th></th> <th></th>
+<th></th> <th></th> <th></th> <th></th> </tr> </thead> <tbody> <tr> <td>0</td>
+<td>2</td> <td>3</td> <td>7</td> <td>9</td> <td>10</td> <td>20</td> <td>58</td>
+<td>60</td> </tr> <tr> <td class="bg-light-green">G</td> <td
+class="bg-light-green">G</td> <td class="bg-light-green">G</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> </tr> <tr> <td
+class="dark-green heavy small"><code>left</code></td> <td></td> <td></td>
+<td></td> <td></td> <td></td> <td></td> <td></td> <td class="dark-red heavy
+small"><code>right</code></td> </tr> </tbody> </table>
+
+<!-- |        |     |     |     |     |     |     |     |         | -->
+<!-- | ------ | --- | --- | --- | --- | --- | --- | --- | ------- | -->
+<!-- | 0      | 2   | 3   | 7   | 9   | 10  | 20  | 58  | 60      | -->
+<!-- | G      | G   | G   | R   | R   | R   | R   | R   | R       | -->
+<!-- | `left` |     |     |     |     |     |     |     | `right` | -->
 
 </div>
 
 <div class="array">
 
-|        |     |     |     |         |     |     |     |     |
-| ------ | --- | --- | --- | ------- | --- | --- | --- | --- |
-| 0      | 2   | 3   | 7   | 9       | 10  | 20  | 58  | 60  |
-| G      | G   | G   | R   | R       | R   | R   | R   | R   |
-| `left` |     |     |     | `right` |     |     |     |     |
+<table> <thead> <tr> <th></th> <th></th> <th></th> <th></th> <th></th>
+<th></th> <th></th> <th></th> <th></th> </tr> </thead> <tbody> <tr> <td>0</td>
+<td>2</td> <td>3</td> <td>7</td> <td>9</td> <td>10</td> <td>20</td> <td>58</td>
+<td>60</td> </tr> <tr> <td class="bg-light-green">G</td> <td
+class="bg-light-green">G</td> <td class="bg-light-green">G</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> </tr> <tr> <td
+class="dark-green heavy small"><code>left</code></td> <td></td> <td></td>
+<td></td> <td class="dark-red heavy small"><code>right</code></td> <td></td>
+<td></td> <td></td> <td></td> </tr> </tbody> </table>
+
+<!-- |        |     |     |     |         |     |     |     |     | -->
+<!-- | ------ | --- | --- | --- | ------- | --- | --- | --- | --- | -->
+<!-- | 0      | 2   | 3   | 7   | 9       | 10  | 20  | 58  | 60  | -->
+<!-- | G      | G   | G   | R   | R       | R   | R   | R   | R   | -->
+<!-- | `left` |     |     |     | `right` |     |     |     |     | -->
 
 </div>
 
 <div class="array">
 
-|     |     |        |     |         |     |     |     |     |
-| --- | --- | ------ | --- | ------- | --- | --- | --- | --- |
-| 0   | 2   | 3      | 7   | 9       | 10  | 20  | 58  | 60  |
-| G   | G   | G      | R   | R       | R   | R   | R   | R   |
-|     |     | `left` |     | `right` |     |     |     |     |
+<table> <thead> <tr> <th></th> <th></th> <th></th> <th></th> <th></th>
+<th></th> <th></th> <th></th> <th></th> </tr> </thead> <tbody> <tr> <td>0</td>
+<td>2</td> <td>3</td> <td>7</td> <td>9</td> <td>10</td> <td>20</td> <td>58</td>
+<td>60</td> </tr> <tr> <td class="bg-light-green">G</td> <td
+class="bg-light-green">G</td> <td class="bg-light-green">G</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> </tr> <tr>
+<td></td> <td></td> <td class="dark-green heavy small"><code>left</code></td>
+<td></td> <td class="dark-red heavy small"><code>right</code></td> <td></td>
+<td></td> <td></td> <td></td> </tr> </tbody> </table>
+
+<!-- |     |     |        |     |         |     |     |     |     | -->
+<!-- | --- | --- | ------ | --- | ------- | --- | --- | --- | --- | -->
+<!-- | 0   | 2   | 3      | 7   | 9       | 10  | 20  | 58  | 60  | -->
+<!-- | G   | G   | G      | R   | R       | R   | R   | R   | R   | -->
+<!-- |     |     | `left` |     | `right` |     |     |     |     | -->
 
 </div>
 
 <div class="array">
 
-|     |     |        |         |     |     |     |     |     |
-| --- | --- | ------ | ------- | --- | --- | --- | --- | --- |
-| 0   | 2   | 3      | 7       | 9   | 10  | 20  | 58  | 60  |
-| G   | G   | G      | R       | R   | R   | R   | R   | R   |
-|     |     | `left` | `right` |     |     |     |     |     |
+<table> <thead> <tr> <th></th> <th></th> <th></th> <th></th> <th></th>
+<th></th> <th></th> <th></th> <th></th> </tr> </thead> <tbody> <tr> <td>0</td>
+<td>2</td> <td>3</td> <td>7</td> <td>9</td> <td>10</td> <td>20</td> <td>58</td>
+<td>60</td> </tr> <tr> <td class="bg-light-green">G</td> <td
+class="bg-light-green">G</td> <td class="bg-light-green">G</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> <td
+class="bg-light-red">R</td> <td class="bg-light-red">R</td> </tr> <tr>
+<td></td> <td></td> <td class="dark-green heavy small"><code>left</code></td>
+<td class="dark-red heavy small"><code>right</code></td> <td></td> <td></td>
+<td></td> <td></td> <td></td> </tr> </tbody> </table>
+
+<!-- |     |     |        |         |     |     |     |     |     | -->
+<!-- | --- | --- | ------ | ------- | --- | --- | --- | --- | --- | -->
+<!-- | 0   | 2   | 3      | 7       | 9   | 10  | 20  | 58  | 60  | -->
+<!-- | G   | G   | G      | R       | R   | R   | R   | R   | R   | -->
+<!-- |     |     | `left` | `right` |     |     |     |     |     | -->
 
 </div>
 
@@ -480,49 +644,16 @@ element is at the end of the array.
 </div>
 </div>
 
-<!-- TODO(tylerhou): Move this to binary search revisited. --!>
-<!-- We write binary search in this manner because **binary search is a more general -->
-<!-- algorithm than finding a number in a sorted list**—in fact, we can apply it to -->
-<!-- any search problem whose search space is a range of numbers and the elements -->
-<!-- in the range correspond to contiguous false and true regions. -->
-
-<!-- The next few lines check our boundary conditions---the base case of our -->
-<!-- induction. -->
-
-<!-- ```python {linenos=table,linenostart=2} -->
-<!--   # Check edge cases. -->
-<!--   if not array or not left < right: -->
-<!--     return None -->
-
-<!--   # left should always point to False, so return early. -->
-<!--   if unary_op(left) == True: -->
-<!--     return 0 -->
-
-<!--   # right should always point to True. -->
-<!--   if unary_op(right) == False: -->
-<!--     # Return array.length here because the array is all falses. -->
-<!--     # We want to return the index of the first true element, -->
-<!--     # and if the array were longer, the first true element -->
-<!--     # might be one after the end. -->
-<!--     return array.length -->
-<!-- ``` -->
-
-<!-- Another way of thinking about the left and right checks are that they detect if -->
-<!-- the whole array corresponds to all true or false. In those cases, we need to -->
-<!-- return the first element (if all true) or one past the end (if all false). (If -->
-<!-- the whole array corresponds to false, we can imagine that the first "true" -->
-<!-- element is one past the end.) -->
-
-<script>
-Array.from(document.getElementsByTagName("td")).forEach((element) => {
-  if (element.innerText === "G") {
-    element.classList.add("bg-light-green");
-  } else if (element.innerText === "R") {
-    element.classList.add("bg-light-red");
-  } else if (element.innerText === "left") {
-    element.classList.add("dark-green", "heavy", "small");
-  } else if (element.innerText === "right") {
-    element.classList.add("dark-red", "heavy", "small");
-  }
-});
-</script>
+<!-- <script> -->
+<!-- Array.from(document.getElementsByTagName("td")).forEach((element) => { -->
+<!--   if (element.innerText === "G") { -->
+<!--     element.classList.add("bg-light-green"); -->
+<!--   } else if (element.innerText === "R") { -->
+<!--     element.classList.add("bg-light-red"); -->
+<!--   } else if (element.innerText === "left") { -->
+<!--     element.classList.add("dark-green", "heavy", "small"); -->
+<!--   } else if (element.innerText === "right") { -->
+<!--     element.classList.add("dark-red", "heavy", "small"); -->
+<!--   } -->
+<!-- }); -->
+<!-- </script> -->

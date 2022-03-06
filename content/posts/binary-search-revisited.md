@@ -85,11 +85,11 @@ that binary search is an algorithm for finding the position of a target value
 in an array. But now our new `binary_search` function doesn't even take an
 array anymore. Why differ from convention?
 
-### A generalization
+### The generalization
 
 Writing binary search as a function that takes a range (a low and high value)
 and a function reveals the generalization: **binary search is an algorithm that
-finds the boundary between contiguous ranges of "green" and "red" elements in
+finds the boundary between contiguous sections of "green" and "red" elements in
 some range.**
 
 Notice that the above definition doesn't mention an array at all. As long as we
@@ -117,8 +117,7 @@ $2^{n} \le 1{,}000{,}000$. Then clearly $2^{n-1} \lt 2^{n} \le 1{,}000{,}000$.
 So $n-1$ must also be green.
 
 We can make a similar argument that all red elements must be followed by more
-red elements, and no green elements. Thus, we have a region of green, followed
-by a region of red.
+red elements. Thus, we have a region of green, followed by a region of red.
 
 Finally, we know that 0 is green ($2^0 = 1 \lt 1{,}000{,}000$), and let's guess
 100 is red. So we can call binary search
@@ -149,11 +148,32 @@ least. How can you divide the chocolate bar into $n$ partitions to maximize the
 number of almonds you get? (You aren't allowed to reorder squares: you must
 break the chocolate at $n-1$ points.)
 
+<div class="array chocolate">
 
----
+|        |     |     |     |     |     |
+| ------ | --- | --- | --- | --- | --- |
+| 6      | 3   | 2   | 8   | 7   | 5   |
+
+<div class="caption">
+Chocolate bar, to be split into three parts.
+</div>
+</div>
+
+<div class="array chocolate">
+
+|     |     |     |     |     |     |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 6   | 3   |     | 2   | 8   |     | 7   | 5   |
+
+<div class="caption">
+Chocolate bar divided into 3 partitions. <br/>
+The first partition has the fewest almonds (9).
+</div>
+</div>
 
 
-I won't explain the solution in detail, but I will present the main idea.
+### Main idea
+
 Another way to state the problem is: find the largest value of $k$ such that we
 can give all friends at least $k$ almonds by partitioning the chocolate bar.
 
@@ -161,6 +181,41 @@ Notice that this problem now has the same structure as above: if it's possible
 to give everyone $k$ almonds, then must be possible to give everyone $k-1$
 almonds. And if it's not possible to give everyone $k$ almonds, then it's also
 not possible to give everyone $k+1$ almonds.
+
+<div class="array chocolate">
+
+|     |     |     |     |     |     |     |     |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 6   | 3   |     | 2   | 8   |     | 7   |     |     | 5   |
+
+|     |     |     |     |     |     |     |     |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 6   |     | 3   | 2   | 8   |     | 7   |     |     | 5   |
+
+<div class="caption">
+Possible to give all three at least 7 almonds (top). <br/>
+So also possible to give at least 6 almonds (bottom).
+</div>
+</div>
+
+<hr width="50%"/>
+
+<div class="array chocolate">
+
+|     |     |     |     |     |     |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 6   | 3   | 2   |     | 8   | 7   |     | 5   |
+
+|     |     |     |     |     |     |     |
+| --- | --- | --- | --- | --- | --- | --- |
+| 6   | 3   | 2   | 8   |     | 7   | 5   |
+
+<div class="caption">
+Not possible to give all three at least 11 almonds (top). <br/>
+So not possible to give at least 12 almonds (bottom).
+</div>
+</div>
+
 
 So, we have a region where it *is* possible to give everyone $k$ almonds,
 followed by a region where it is not. We can find the boundary between the two

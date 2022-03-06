@@ -319,7 +319,7 @@ ol ol ol {
     }
 }
 
-// BINARY SEARCH CUSTOM CSS
+// binary-search-with-confidence
 .array table {
   border-collapse: collapse;
   margin-left: auto;
@@ -374,4 +374,28 @@ mjx-container {
 }
 .heavy {
   font-weight: 600;
+}
+
+// binary-search-revisited
+.chocolate td {
+    background-color: #7B3F00;
+    color: $base3;
+}
+
+.chocolate td:empty {
+    background-color: inherit;
+}
+
+.chocolate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .caption {
+        margin-top: -1.75em;
+        margin-bottom: 1.75em;
+        font-size: 0.85em;
+        line-height: 1.4em;
+        text-align: center;
+    }
 }
