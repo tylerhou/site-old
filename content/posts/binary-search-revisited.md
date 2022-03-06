@@ -4,7 +4,7 @@ subtitle:
 date: 2022-03-05T04:50:48-08:00
 code: true
 math: true
-draft: true
+draft: false
 unlisted: false
 _build:
   list: true
