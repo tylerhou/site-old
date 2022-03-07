@@ -86,13 +86,13 @@ The two combined complete our argument, and thus prove $A$ holds over all loop
 interations. In other words, $A$ is *invariant.*
 
 The above argument is an argument by [*mathematical
-induction.*](https://en.wikipedia.org/wiki/Mathematical_induction). To make an
+induction.*](https://en.wikipedia.org/wiki/Mathematical_induction) To make an
 argument by mathematical induction, one has to prove two things: the *base
 case* and the *inductive step*. To prove that Statement $A$ was invariant,
-Statement 1 was the base case, and Statement 2 was the inductive case.
+Statement 1 was the base case, and Statement 2 was the inductive step.
 
 To make a correct argument by induction, you must prove both the base case and
-the inductive case. Otherwise, the argument is not valid. For exmaple, if `num`
+the inductive step. Otherwise, the argument is not valid. For exmaple, if `num`
 was initially odd, then our base case would be different, and that would change
 our invariant: `num` would always be odd, not even, as a odd number would stay
 odd every iteration.
@@ -397,7 +397,7 @@ gap between the two must continually shrink.[^1] We leave this as an exercise to
 the reader.[^2]
 
 [^1]: To formally prove this, you would have again have to use a inductive
-  argument. What is the base case? What is the inductive case?
+  argument. What is the base case? What is the inductive step?
 
 [^2]: Hint: when `middle` is computed, `right` must be at least two larger
   than `left`.
@@ -409,19 +409,19 @@ which we know `right` stores.
 
 Are we done? Not so fast!
 
-In the previous section we showed that the loop body *maintains* the invariant.
-In other words, we proved the inductive step: that *if* `left` (`right`)
-pointed to a green (red) element at the beginning of a loop iteration, it would
-continue to point to a green (red) element at the end.
+In the previous section we showed that the loop body *maintains* our desired
+invariants. In other words, we proved the inductive step: that *if* `left`
+(`right`) pointed to a green (red) element at the beginning of a loop
+iteration, it would continue to point to a green (red) element at the end.
 
-But that's a big *if*, since we never established that the invariant was true
+But that's a big *if*, since we never established that the invariants were true
 in the first place! If the entire array was green, for instance, we would only
 <span>move</span> `left`. Then `right` would point to a green element after the
 loop ended.
 
-Stepping back, to prove that our loop is correct, we must prove that the
-invariant holds. We've already proved the inductive case above. But to
-complete our argument, we **must** also "prove" the base case.
+Stepping back, to prove that our loop is correct, we must prove that our
+desired statements are invariant. We've already proved the inductive step
+above. But to complete our argument, we **must** also "prove" the base case.
 
 To prove the base case, we must ensure that before we enter the loop the
 statements that we want to be invariant are indeed true. So we check that

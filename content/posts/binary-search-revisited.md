@@ -135,10 +135,8 @@ It's also important to note that `is_exp_green` (which computes the power of 2)
 is only executed $\mathcal{O}(\log{n})$ times. So this variant of binary search
 is still efficient.
 
-### A larger example
+### [An interview question](https://leetcode.com/discuss/interview-question/350800/Google-or-Onsite-or-Chocolate-Sweetness)
 
-[An interview
-question.](https://leetcode.com/discuss/interview-question/350800/Google-or-Onsite-or-Chocolate-Sweetness)
 Suppose you have a chocolate bar with almonds. The chocolate bar has grooves,
 dividing it into squares. Each square has a certain number of almonds.
 
@@ -175,10 +173,10 @@ The first partition has the fewest almonds (9).
 ### Main idea
 
 Another way to state the problem is: find the largest value of $k$ such that we
-can give all friends at least $k$ almonds by partitioning the chocolate bar.
+can give everyone at least $k$ almonds by partitioning the chocolate bar.
 
 Notice that this problem now has the same structure as above: if it's possible
-to give everyone $k$ almonds, then must be possible to give everyone $k-1$
+to give everyone $k$ almonds, then it must be possible to give everyone $k-1$
 almonds. And if it's not possible to give everyone $k$ almonds, then it's also
 not possible to give everyone $k+1$ almonds.
 
@@ -187,18 +185,20 @@ not possible to give everyone $k+1$ almonds.
 |     |     |     |     |     |     |     |     |     |     |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 6   | 3   |     | 2   | 8   |     | 7   |     |     | 5   |
+<div class="caption">
+Possible to give all three at least 7 almonds.
+</div>
 
 |     |     |     |     |     |     |     |     |     |     |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 6   |     | 3   | 2   | 8   |     | 7   |     |     | 5   |
 
 <div class="caption">
-Possible to give all three at least 7 almonds (top). <br/>
-So also possible to give at least 6 almonds (bottom).
+So also possible to give at least 6 almonds.
 </div>
 </div>
 
-<hr width="50%"/>
+<hr width="70%"/>
 
 <div class="array chocolate">
 
@@ -206,13 +206,16 @@ So also possible to give at least 6 almonds (bottom).
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 6   | 3   | 2   |     | 8   | 7   |     | 5   |
 
+<div class="caption">
+Not possible to give all three at least 11 almonds.
+</div>
+
 |     |     |     |     |     |     |     |
 | --- | --- | --- | --- | --- | --- | --- |
 | 6   | 3   | 2   | 8   |     | 7   | 5   |
 
 <div class="caption">
-Not possible to give all three at least 11 almonds (top). <br/>
-So not possible to give at least 12 almonds (bottom).
+So not possible to give at least 12 almonds.
 </div>
 </div>
 
