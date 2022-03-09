@@ -3,5 +3,5 @@ https://tylerhou.io/* https://blog.tylerhou.io/:splat 301!
 https://www.tylerhou.io/* https://blog.tylerhou.io/:splat 301!
 https://tylerhou.netlify.com/* https://blog.tylerhou.io/:splat 301!
 
-/feedback https://docs.google.com/forms/d/e/1FAIpQLSd-oGEGxRVbY59FUiCru7LTqJxJhDRCcr4gphe3q7WL8wiBwA/viewform?usp=sf_link
+/feedback https://docs.google.com/forms/d/e/1FAIpQLSfhQsB87Iajqstzh6owb9XDYEBi3enHFxyBZ4KLxuQiSYyBQg/viewform?usp=sf_link
 /iterators /posts/iterators-generators-python
