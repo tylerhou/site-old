@@ -3,3 +3,6 @@ static/assets
 resources
 public
 data/manifest.json
+
+# macOS
+.DS_STORE
