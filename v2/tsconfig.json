@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "types": ["bun-types"],
+
+    "lib": ["ESNext"],
+    "module": "esnext",
+    "target": "esnext",
+
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "moduleDetection": "force",
+
+    "jsx": "react-jsx",
+
+    "strict": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "forceConsistentCasingInFileNames": true,
+    "importsNotUsedAsValues": "error",
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Strictest"
+}
