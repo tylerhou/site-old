@@ -4,5 +4,8 @@ resources
 public
 data/manifest.json
 
+# Hugo
+.hugo_build.lock
+
 # macOS
 .DS_STORE
